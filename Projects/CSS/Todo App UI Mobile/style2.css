@@ -397,12 +397,12 @@ footer a:hover{
   .task-list-container {
     flex-wrap: nowrap;
     align-items: center;
-    grid-column: 2;
+    grid-column: 1 / span 2;
   }
   .task-list {
     border-radius: 5px;
     max-width: 95%;
-    min-width: 50%;
+    min-width: 70%;
     min-height: 50vh;
     box-sizing: border-box;
   }
