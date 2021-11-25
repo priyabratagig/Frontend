@@ -1,0 +1,14 @@
+.container{
+  margin: auto;
+  display: flex;
+  width: fit-content;
+}
+p{
+  text-align: center;
+}
+.box{
+  border: 2px dashed red;
+  border-radius: 5%;
+  margin: 0 1rem;
+  padding: 0 1rem;
+}

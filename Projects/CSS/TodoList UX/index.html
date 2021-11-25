@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TodoList UX</title>
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="../../../font-awsome/css/all.css">
+</head>
+
+<body>
+	<div class="overlay" id="disclaimer">
+		<div class="pop-up">
+			<div class="pop-up-heading">
+				<div>Hi, I'm pure css</div>
+				<div>
+          <a class="close" href="#">
+            <i class="fas fa-times-circle"></i>
+            </a>
+          </div>
+      </div>
+    <div class="pop-up-body">
+      <ul>
+        <li>Check uncheck task</li>
+        <li>Add list, task</li>
+        <li>Hover around</li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <div class="overlay" id="add-task">
+    <a href="#" class="close"></a>
+		<div class="pop-up">
+			<div class="pop-up-heading">
+				<div>Add New List</div>
+      </div>
+    <div class="pop-up-body">
+      <input type="text" id="input-list">
+      <button>ADD</button>
+    </div>
+  </div>
+  </div>
+  <div id="container-overlay">
+    <div class="container">
+		<div class="list-header">
+			<div>
+				<span id="header1">Tasks</span>
+        <span id="header2">Lists</span>
+      </div>
+      <div id="header3">
+          <div><a href="#add-task"><i class="fas fa-plus-circle fa-lg"></i></a></div>
+          <div>Add List</div>
+      </div>
+    </div>
+    <div class="list-body">
+      <div class="list">
+        <div class="list-name">Trip to Paris</div>
+          <div class="list-tasks">
+            <hr>
+            <div>
+              <input type="checkbox" id="trip-to-paris1" checked>
+              <lable for="trip-to-paris1">Completed Task</lable>
+            </div>
+            <div>
+              <input type="checkbox" id="trip-to-paris2">
+              <lable for="trip-to-paris2">Plesae uncheck above task</lable>
+            </div>
+          </div>
+      </div>
+      <div class="list"></div>
+      <div class="list">
+        <div class="list-name">My Todo List</div>
+          <div class="list-tasks">
+            <hr>
+            <div>
+              <input type="checkbox" id="My-Todo-List1" checked>
+              <lable for="My-Todo-List1">Completed Task</lable>
+            </div>
+            <div>
+              <input type="checkbox" id="My-Todo-List2">
+              <lable for="My-Todo-List2">Press Add Lsit</lable>
+            </div>
+          </div>
+      </div>
+      <div class="list"></div>
+      <div class="list">
+        <div class="list-name">My Todo List</div>
+          <div class="list-tasks">
+            <hr>
+            <div>
+              <input type="checkbox" id="My-Todo-List1" checked>
+              <lable for="My-Todo-List1">Completed Task</lable>
+            </div>
+            <div>
+              <input type="checkbox" id="My-Todo-List2">
+              <lable for="My-Todo-List2">Check me</lable>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+	<footer>
+    <div><a href="./index.html"><i class="fas fa-home"></i></a></div>
+    <div><a href="#disclaimer"><i class="fas fa-arrow-left"></i></a>
+    <a href="./index2.html"><i class="fas fa-arrow-right"></i></a></div>
+    <div></div>
+  </footer>
+</body>
+</html>

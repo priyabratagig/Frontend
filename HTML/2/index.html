@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Form Submit</title>
+</head>
+
+<body>
+	<form method="GET">
+		<center>
+			<label for="name">Name</labe>
+     <input type="name" name="name" maxlength="20" required placeholder="enter your name here">
+     <label for="email">E-mail</labe>
+     <input type="email" name="email" maxlength="50" required placeholder="enter your mail"><br><br>
+     <label for="password">Password</labe>
+     <input type="password" name="password" maxlength="30" required><hr>
+     <p align="left">
+       Technology<br>
+      <input type="radio" id="REACT" name="technlogy" value="REACT">
+      <label for="REACT">React</label><br>
+      <input type="radio" id="ANGULAR" name="technlogy" name="technlogy" value="ANGULAR" required>
+      <label for="ANGULAR">Angular</label><br>
+      <input type="radio" id="VUE" name="technlogy" value="VUE" required>
+      <label for="VUE">Vue</label>
+     </p>
+     <p align="left">
+      Course<br>
+      <input type="checkbox" id="MERN" name="Course" value="MERN">
+      <label for="MERN">MERN</label><br>
+      <input type="checkbox" name="Course" id="MEAN" value="MEAN">
+      <label for="MEAN">MEAN</label><br>
+      <input type="checkbox" id="MEVN" name="Course" value="MEVN">
+      <label for="MEVN">MEVN</label>
+     </p>
+    <label for="selection">FIELD</label>
+    <select name="selection" id="selection" required>
+     <option value="">select</option>
+     <option value="Front End">Front End</option>
+     <option value="Bcak End">Bcak End</option>
+     <option value="Full Stcak">Full Stcak</option>
+    </select><br>
+    <textarea name="textarea" cols="30" rows="10" placeholder="Add Notes.."></textarea><br>
+    <label for="mobile">Phone Number</label>
+    <input type="number" name="mobile" max="9999999999" min="6111111111" placeholder="enter your mobile number" required><hr>
+    <button type="submit">Submit</button>
+   </center></form>
+   <h4><a href="./table.html">Table...</a></h4>
+  </body>
+</html>

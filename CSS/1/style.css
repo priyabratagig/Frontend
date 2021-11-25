@@ -1,0 +1,28 @@
+* {
+  color: #c6682f;
+  line-height: 1.5;
+}
+.head {
+  color: #ff4d29;
+  font-style: italic;
+}
+.highlight {
+  font-size: +1;
+  font-weight: bold;
+  background: #f7f41f;
+}
+.monospace {
+  letter-spacing: 2pt;
+}
+.strick {
+  text-decoration: line-through;
+}
+.italic {
+  font-style: italic;
+}
+.underline {
+  text-decoration: underline;
+}
+a {
+  text-decoration: none;
+}
