@@ -1,0 +1,61 @@
+html, body{
+  margin:0%;
+  height: 100vh;
+  width: 100vw;
+}
+body{
+  background: linear-gradient(to right bottom, #942fd6, #e3257e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.container{
+  height: 95vh;
+  width: 95vw;
+  background: rgba(0, 0, 0, 0.24);
+  display: grid;
+}
+.logo{
+  width: fit-content;
+  background: antiquewhite;
+  grid-column: 1 / 1;
+  grid-row: 1 / span 1;
+  place-self: flex-start flex-start;
+}
+.logo-img{
+  float: left;
+  shape-outside: circle(46%);
+  height: calc(8vh + 8vw);
+  width: calc(8vh + 8vw);
+}
+.logo-img > img{
+  height: 100%;
+  width: 100%;
+}
+.logo-text {
+  font-size: calc(2vh + 2vw);
+  font-family: cursive;
+  padding: 1px 0;
+  font-weight: bolder;
+  width: calc(14vh + 14vw);
+}
+.time{
+  background: #ffff;
+  grid-column: 2 / span 1;
+  place-self: flex-start center;
+  display: flex;
+  padding: 5px;
+  border-radius: 10px;
+}
+.time-child{
+  height: calc(5vh + 5vw);
+  width: calc(5vh + 5vw);
+  border: thin solid gray;
+  border-radius: 10px;
+  margin: 0 3px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
