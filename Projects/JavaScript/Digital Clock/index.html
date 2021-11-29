@@ -20,25 +20,126 @@
         Your Digital Clock
       </div>
     </div>
-    <div class="time">
-      <div class="time-text time-child">
+    <div class="time-shadow">
+      <div></div>
+    </div>
+    <div class="time-container">
+      <div class="time-child">
         <div>TIME</div>
       </div>
-      <div class="time-hr time-child">
+      <div class="time-child">
         <div id="hrs"></div>
         <div>hours</div>
       </div>
-      <div class="time-min time-child">
+      <div class="time-child">
         <div id="mins"></div>
         <div>mins</div>
       </div>
-      <div class="time-sec time-child">
+      <div class="time-child">
         <div id="secs"></div>
         <div>secs</div>
       </div>
-      <div class="meridiem time-child">
+      <div class="time-child">
         <div id="meridiem"></div>
       </div>
+    </div>
+    <div class="form-container">
+    <div class="form">
+      <div class="input">
+      <i class="fas fa-sun"></i>
+      <label for="wake-up">Set wake up time</label>
+      <select id="wake-up" required>
+       <option value="">-- --</option>
+       <option value="1">0-2 AM</option>
+       <option value="2">1-3 AM</option>
+       <option value="3">2-4 AM</option>
+       <option value="4">3-5 AM</option>
+       <option value="5">4-6 AM</option>
+       <option value="6">5-7 AM</option>
+       <option value="7">6-8 AM</option>
+       <option value="8">7-9 AM</option>
+       <option value="9">8-10 AM</option>
+       <option value="10">9-11 AM</option>
+       <option value="11">10-12 AM</option>
+       <option value="12">0-2 PM</option>
+       <option value="13">1-3 PM</option>
+       <option value="14">2-4 PM</option>
+       <option value="15">3-5 PM</option>
+       <option value="16">4-6 PM</option>
+       <option value="17">5-7 PM</option>
+       <option value="18">6-8 PM</option>
+       <option value="19">7-9 PM</option>
+       <option value="20">8-10 PM</option>
+       <option value="21">9-11 PM</option>
+       <option value="22">10-12 PM</option>
+      </select>
+      </div>
+     <div></div>
+      <div class="input">
+      <i class="fas fa-utensils"></i>
+      <label for="lunch">Set lunch time</label>
+      <select id="lunch" required>
+       <option value="">-- --</option>
+       <option value="1">0-2 AM</option>
+       <option value="2">1-3 AM</option>
+       <option value="3">2-4 AM</option>
+       <option value="4">3-5 AM</option>
+       <option value="5">4-6 AM</option>
+       <option value="6">5-7 AM</option>
+       <option value="7">6-8 AM</option>
+       <option value="8">7-9 AM</option>
+       <option value="9">8-10 AM</option>
+       <option value="10">9-11 AM</option>
+       <option value="11">10-12 AM</option>
+       <option value="12">0-2 PM</option>
+       <option value="13">1-3 PM</option>
+       <option value="14">2-4 PM</option>
+       <option value="15">3-5 PM</option>
+       <option value="16">4-6 PM</option>
+       <option value="17">5-7 PM</option>
+       <option value="18">6-8 PM</option>
+       <option value="19">7-9 PM</option>
+       <option value="20">8-10 PM</option>
+       <option value="21">9-11 PM</option>
+       <option value="22">10-12 PM</option>
+      </select>
+      </div>
+     <div></div>
+      <div class="input">
+      <i class="fas fa-bed"></i>
+      <label for="dinner">Set dinner time</label>
+      <select id="dinner" required>
+      <option value="">-- --</option>
+       <option value="1">0-2 AM</option>
+       <option value="2">1-3 AM</option>
+       <option value="3">2-4 AM</option>
+       <option value="4">3-5 AM</option>
+       <option value="5">4-6 AM</option>
+       <option value="6">5-7 AM</option>
+       <option value="7">6-8 AM</option>
+       <option value="8">7-9 AM</option>
+       <option value="9">8-10 AM</option>
+       <option value="10">9-11 AM</option>
+       <option value="11">10-12 AM</option>
+       <option value="12">0-2 PM</option>
+       <option value="13">1-3 PM</option>
+       <option value="14">2-4 PM</option>
+       <option value="15">3-5 PM</option>
+       <option value="16">4-6 PM</option>
+       <option value="17">5-7 PM</option>
+       <option value="18">6-8 PM</option>
+       <option value="19">7-9 PM</option>
+       <option value="20">8-10 PM</option>
+       <option value="21">9-11 PM</option>
+       <option value="22">10-12 PM</option>
+      </select>
+      </div>
+    </div>
+      <button id="set-alarm" onclick="setAlarm()">Party time!</button>
+    </div>
+    <div class="message-box">
+      <img src="./general.jpg" id="message" alt="message image">
+      <div class="active-count"></div>
     </div>
   </div>
 </body>
