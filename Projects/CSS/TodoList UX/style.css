@@ -69,7 +69,7 @@ footer{
 }
 #header3 i:hover{
   font-size: 4.5vh;
-  color:#ff6161;;
+  color:#ff6161;
 }
 .list-body{
   display: flex;
@@ -86,16 +86,19 @@ footer{
   display: none;
 }
 .list{
-  border: thin solid #ff6161;;
+  border: thin solid #ff6161;
   border-radius: 4%;
   padding: 1vh 0 1vh 1vw;
   box-shadow: 1vw 1vw rgb(0 0 0 / 5%);
+  flex-basis: 30%;
 }
 .list:empty{
   visibility: hidden;
+  flex-basis: 0%;
 }
-.list-name{
-  color: #ff6161;;
+.list-name, .list-name>a{
+  text-decoration: none;
+  color: #ff6161;
   font-size: 4vh;
   font-family: sans-serif;
   font-weight: lighter;
@@ -112,7 +115,7 @@ footer{
   bottom: 20%;
 }
 .list-tasks input:checked + lable{
-  color: #ff6161;;
+  color: #ff6161;
   text-decoration: line-through;
 }
 .list-tasks input:checked {

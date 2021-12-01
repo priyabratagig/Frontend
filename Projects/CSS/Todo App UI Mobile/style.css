@@ -98,9 +98,11 @@ footer{
   border-radius: 4%;
   padding: 1vh 0 1vh 1vw;
   box-shadow: 1vw 1vw rgb(0 0 0 / 5%);
+  flex-basis: 30%
 }
 .list:empty{
   visibility: hidden;
+  flex-basis: 0%;
 }
 .toggle{
   display: none;
@@ -108,7 +110,8 @@ footer{
 .fold{
   display: none;
 }
-.list-name{
+.list-name , .list-name > a{
+  text-decoration: none;
   color: var(--primary-color);
   font-size: 4vh;
   font-family: sans-serif;
@@ -399,6 +402,7 @@ footer a:hover{
     box-shadow: 1vw 2vw rgb(0 0 0 / 5%);
     min-height: 8vh;
     padding: 0;
+    flex-basis: revert;
   }
   .fold {
     display: block;
@@ -415,14 +419,14 @@ footer a:hover{
   .toggle:checked + label > .list-tasks{
     display: block;
   }
-  .toggle:checked + label > .list-name{
+  .toggle:checked + label > .list-name, .toggle:checked + label > .list-name a{
     color: var(--primary-color);
     align-self: center;
   }
   .toggle:checked + label > .fold{
     display: none;
   }
-  .list-name {
+  .list-name , .list-name > a{
     color: var(--header-color-secondary);
     font-size: 6vw;
     text-align: initial;

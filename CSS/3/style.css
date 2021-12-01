@@ -1,0 +1,115 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-size: 62.5%;
+}
+body {
+  background-color: gray;
+}
+body > hr {
+  border-color: white;
+  margin: 1em 0;
+}
+.board-box {
+  background-color: white;
+  font-size: 2rem;
+  color: #b80404;
+  font-weight: bold;
+  border: 0.4rem solid red;
+  border-radius: 1em;
+  width: fit-content;
+  text-align: center;
+  padding: 0.5em;
+}
+body > div:nth-child(1) {
+  margin: 0 auto;
+  font-style: italic;
+}
+body > div:nth-child(2) {
+  background-color: greenyellow;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+}
+body > div:nth-child(2) > p {
+  flex-basis: 40%;
+  text-align: left;
+}
+body > div:nth-last-child(2) {
+  border: 0.5rem solid green;
+  min-height: 70vh;
+  margin: 1rem;
+  position: relative;
+  margin-bottom: 2rem;
+}
+body > div:nth-last-child(2) > div {
+  width: 20%;
+}
+body > div:nth-last-child(2) img {
+  height: 100%;
+  width: 100%;
+}
+body > div:nth-last-child(2) > div:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+body > div:nth-last-child(2) > div:nth-child(3) {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+body > div:nth-last-child(2) > div:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body > div:nth-last-child(2) > div:last-child input {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+}
+body > div:last-child {
+  background-color: green;
+  width: 70%;
+  margin: 0 auto;
+  font-style: italic;
+  border: 0.5rem solid purple;
+}
+body > div:last-child > h2 {
+  text-align: center;
+  font-size: 3rem;
+  padding: 3rem;
+}
+body > div:last-child > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+body > div:last-child > div > div {
+  background-color: goldenrod;
+  font-weight: lighter;
+}
+body > div:last-child > div > div > h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  color: #7a7777;
+  padding: 1em;
+}
+body > div:last-child > div > div > p {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 1em;
+  line-height: 2rem;
+}
+body > div:last-child > div > div:last-child {
+  grid-column: 1/ span 2;
+}
