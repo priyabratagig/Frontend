@@ -1,0 +1,116 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 62.5%;
+}
+.rim {
+  text-align: center;
+  font-size: 2rem;
+  margin: 1em 0;
+}
+.offer {
+  text-decoration: underline;
+  background-image: linear-gradient(to right, red, green, yellow);
+}
+.nav {
+  margin: 1em auto;
+  width: 50vw;
+  font-size: 1.5rem;
+  border: 0.3rem solid red;
+  border-radius: 1em;
+  text-align: center;
+  background-color: #60d4e0;
+}
+.nav-list a {
+  text-decoration: none;
+  color: black;
+}
+.advertise {
+  display: flex;
+  background-color: #49d1ba;
+  font-size: 2rem;
+  border: 0.2rem solid #58c4b1;
+  border-radius: 1em;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.advertise > div {
+  flex-basis: 30%;
+  flex-shrink: 0;
+  background-color: #6eebd4;
+  border: 0.2rem solid #47b3a1;
+  border-radius: 1em;
+  padding: 0.2em;
+}
+.performer {
+  text-decoration: underline;
+  background-image: linear-gradient(to right, red, yellow, red);
+}
+.rank-baord {
+  background: radial-gradient(#3d5dff 45%, #3dffb8 90%);
+  min-height: 40vh;
+  border: 0.5rem solid #175e37;
+  border-radius: 1em;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.ranks {
+  text-align: center;
+  text-decoration: underline;
+  color: brown;
+  background-color: #f0d41d;
+  border: 0.2rem solid brown;
+  border-radius: 1rem;
+}
+.detail {
+  color: wheat;
+  background-color: red;
+  padding: 0 0 1rem;
+}
+.interactive {
+  font-size: 2.5em;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr max-content;
+  grid-gap: 1em;
+  color: white;
+  text-align: center;
+}
+.interactive > div:nth-child(1) {
+  background-color: #88ff4d;
+}
+.interactive > div:nth-child(2) {
+  background-color: #4691fa;
+}.interactive > div:nth-child(3) {
+  background-color: #894aff;
+}.interactive > div:nth-child(4) {
+  background-color: black;
+  grid-row: 1 / span 2;
+  grid-column: 4;
+}.interactive > div:last-child {
+  background-color: #f78e1e;
+  grid-column: 1 / span 3;
+}
+.facitities {
+  list-style-position: inside;
+  text-align: left;
+  font-size: 1.6rem;
+  padding: 1em;
+}
+.facitities > li {
+  margin: 0.5rem 0;
+}
+.facitities hr {
+  width: 75%;
+  margin: 0 auto;
+}
+.end {
+  background-color: #14a0f7;
+  padding: 0.2em 0 0.5em;
+  margin-top: 2em;
+}
