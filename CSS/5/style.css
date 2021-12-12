@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+}
+html{
+  font-size: 62.5%;
+  font-family: 'PT Sans', sans-serif;
+}
+body {
+  background-image: url(camels.png), url(desert.jpg);
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-position: top, bottom;
+}
+img{
+  width: inherit;
+}
+.nav {
+  position: fixed;
+  margin: 1em 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+.logo {
+  width: 3rem;
+}
+.menu {
+  display: flex;
+  align-items: center;
+}
+.list {
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  transition-property:translate;
+  transition-duration: 2s;
+}
+.list > a{
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.list:target{
+  position: fixed;
+  transform: translate (-0.5rem, 4rem);
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.btn {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.2rem;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
