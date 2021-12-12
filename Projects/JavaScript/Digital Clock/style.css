@@ -124,6 +124,7 @@ img{
   color: var(--primary-color);
   border-radius: 0.2em;
   place-self: start stretch;
+  background-color: rgb(0 0 0 / 0.1);
 }
 .form > div:empty {
   flex-grow: 1;
