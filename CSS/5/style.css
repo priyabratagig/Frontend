@@ -1,67 +1,165 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 *{
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
 }
 html{
   font-size: 62.5%;
-  font-family: 'PT Sans', sans-serif;
 }
-body {
-  background-image: url(camels.png), url(desert.jpg);
-  background-repeat: no-repeat, no-repeat;
-  background-size: cover, cover;
-  background-position: top, bottom;
+body{
+  font-family: 'PT Sans', sans-serif;
+  box-sizing: border-box;
+  background-image: url(desert.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
 }
 img{
-  width: inherit;
-}
-.nav {
-  position: fixed;
-  margin: 1em 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: white;
-}
-.logo {
-  width: 3rem;
-}
-.menu {
-  display: flex;
-  align-items: center;
-}
-.list {
-  display: flex;
-  font-size: 1.5rem;
-  align-items: center;
-  padding: 0.5em;
-  border-radius: 0.5em;
-  transition-property:translate;
-  transition-duration: 2s;
-}
-.list > a{
-  text-decoration: none;
-  color: inherit;
   display: block;
 }
-.list:target{
-  position: fixed;
-  transform: translate (-0.5rem, 4rem);
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.4);
+.container{
+  display: grid;
+  gap: 2rem;
+  width: 95vw;
+  margin: 2rem auto;
 }
-.btn {
-  width: 2rem;
-  height: 2rem;
-  padding: 0.2rem;
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  margin: 0 0.5rem;
+@media (min-width: 44em){
+  .container{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .container > article{
+    grid-row: 2 / span 2;
+    grid-column: 1;
+  }
+}
+.nav{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+@media (min-width: 44em){
+  .nav{
+    grid-column: 1 / span 3;
+    grid-row: 1;
+  }
+}
+.nav__logo{
+  width: 5rem;
+}
+.nav :link {
   text-decoration: none;
+  color: white;
+}
+.nav__items {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.nav__btn {
+  display: none;
+}
+@media (max-width: 43em){
+  #nav-items{
+    position: absolute;
+    right: 0;
+    transform: translateY(0%);
+    flex-direction: column;
+    align-items: center;
+    padding: 0.3em;
+    border-radius: 0.2em;
+    transition: transform 0.5s;
+    visibility: collapse;
+  }
+  #nav-items:target{
+    transform: translateY(80%);
+    background-color: rgb(0 0 0 / 0.3);
+    visibility: visible;
+  }
+  .nav__btn {
+    height: 1.5em;
+    width: 1.5em;
+    background-color: white;
+    display: grid;
+    place-items: center stretch;
+    padding: .2em;
+    border-radius: 50%;
+  }
+  #nav-items:target + a > hr{
+    grid-row: 1 / 1;
+    grid-column:  1 /1;
+    place-self: center stretch;
+    transition: transform .5s;
+  }
+  #nav-items:target + a > hr:first-of-type{
+    transform: rotate(40deg);
+  }
+  #nav-items:target + a > hr:last-of-type{
+    transform: rotate(140deg);
+  }
+  #nav-items .close{
+    position: absolute;
+    bottom: 110%;
+    right: 0;
+    height: 3rem;
+    width: 3rem;
+  }
+}
+.heading{
+  color: white;
+  font-size: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  gap: 2rem;
+}
+.heading__primary{
+  font-size: 4em;
+  font-weight: bold;
+}
+.heading__secondary{
+  line-height: 2;
+}
+.heading__btn{
+  font-size: 1.5em;
+  padding: .3em 2em;
+  background-color: white;
+  border: 0;
+  border-radius: 1em;
+  margin: 0 auto;
+}
+.container > img{
+  width: 75%;
+  place-self: center;
+  border-radius: 3em;
+}
+.image{
+  position: relative;
+  width: 75%;
+  place-self: center;
+  border-radius: 2em;
+  transition:  box-shadow .5s, transform .5s;
+}
+.image:hover{
+  transform: translateY(-4%);
+  box-shadow: 0.2rem 1.5rem 1rem rgb(0 0 0/0.5);
+}
+.image .heading{
+  position: absolute;
+  top: .5em;
+  gap: 0;
+}
+.image .heading__primary{
+  font-size: 2em;
+}
+.image > img{
+  border-radius: 2em;
 }

@@ -1,0 +1,223 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+html{
+  font-size: 62.5%;
+}
+body{
+  box-sizing: border-box;
+  background-color: yellow;
+}
+.container{
+  width: 75vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+.box{
+  width: 100%;
+  aspect-ratio: 1;
+  place-self: center center;
+}
+.liner-swing{
+  animation: 4s liner-swing infinite;
+  background-image: linear-gradient(to bottom, white, red);
+}
+@-webkit-keyframes liner-swing { 
+  25% {
+    transform: skewX(-30deg);
+  }
+  50% { 
+    transform: skewX(0);
+  }
+  75%{
+     transform: skewX(30deg);
+  }
+  100%{
+    transform: skewX(0);
+  } 
+}
+@keyframes liner-swing {
+  25% {
+    transform: skewX(-30deg);
+  }
+  50% { 
+    transform: skewX(0);
+  }
+  75%{
+     transform: skewX(30deg);
+  }
+  100%{
+    transform: skewX(0);
+  }
+}
+.angular-swing{
+ animation: 4s angular-swing infinite;
+ background-image: linear-gradient(to right bottom, blue, #03fc8c);
+}
+@-webkit-keyframes angular-swing {
+  25% {
+    transform: skew(20deg,-20deg);
+  }
+  50% { 
+    transform: skew(0deg, 0deg);
+  }
+  75%{
+     transform: skew(-25deg,25deg);
+  }
+  100%{
+    transform: skew(0deg, 0deg);
+  }
+}
+@keyframes angular-swing {
+  25% {
+    transform: skew(20deg,-20deg);
+  }
+  50% { 
+    transform: skew(0deg, 0deg);
+  }
+  75%{
+     transform: skew(-25deg,25deg);
+  }
+  100%{
+    transform: skew(0deg, 0deg);
+  }
+}
+.rotate{
+  animation: 4s rotate infinite;
+  background-image: linear-gradient(to right bottom, orange, #be03fc);
+}
+@-webkit-keyframes rotate {
+  form {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes rotate {
+  form {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+.box--dynamic{
+  aspect-ratio: revert;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to right bottom, #c2fc03, #fc3d03);
+}
+#a{
+  height: 50%;
+  animation: 4s hightUp infinite; 
+}
+@-webkit-keyframes hightUp {
+  form {
+    height: 50%;
+  }
+  to {
+    height: 100%;
+  }
+}
+@keyframes hightUp {
+  form {
+    height: 50%;
+  }
+  to {
+    height: 100%;
+  }
+}
+#b{
+  width: 50%;
+  animation: 4s widthUp infinite;
+}
+@-webkit-keyframes widthUp {
+  form {
+    width: 50%;
+  }
+  to {
+    height: 100%;
+  }
+}
+@keyframes widthUp {
+  form {
+    width: 50%;
+  }
+  to {
+    width: 100%;
+  }
+}
+#c{
+  height: 50%;
+  width: 50%;
+  animation: 4s areaUp infinite;
+}
+@-webkit-keyframes areaUp {
+  form {
+    height: 50%;
+    width: 50%;
+  }
+  to {
+    height: 100%;
+    width: 100%;
+  }
+}
+@keyframes areaUp {
+  form {
+    height: 50%;
+    width: 50%;
+  }
+  to {
+    height: 100%;
+    width: 100%;
+  }
+}
+#d{
+  background-image: linear-gradient(to right bottom, #c2fc03, #fc3d03);
+  animation: 4s re-rotate infinite;
+}
+@-webkit-keyframes re-rotate {
+  50% {
+    transform: rotate(0.5turn);
+  }
+  100% {
+    transform: rotate(0turn);
+  }
+}
+@keyframes re-rotate {
+  50% {
+    transform: rotate(0.5turn);
+  }
+  100% {
+    transform: rotate(0turn);
+  }
+}
+.redirect {
+  grid-column: 1 / span 4;
+  place-self: center;
+  font-size: 2.5rem;
+}
+.redirect i{
+  text-decoration: none;
+  vertical-align: middle;
+  color: black;
+  transform: rotate(0);
+  transition: transform .5s, font-size .5s;
+}
+.redirect i:hover{
+  font-size: 4rem;
+  color: red;
+  transform: rotate(1turn);
+}
