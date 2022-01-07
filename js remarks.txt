@@ -1,0 +1,4 @@
+Nested fucntion?
+Lexical scope and closure.
+setTimeout()
+arrow fucntion, fucntion naming

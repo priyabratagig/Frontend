@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../../font-awsome/css/all.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Todo App</title>
+  </head>
+  <body>
+    <div class="pop-up__container" id="pop-up-window">
+      <div class="pop-up" id="newTaskList">
+        <p class="pop-up__header">Add New List</p>
+        <input type="text" id="input-list-name" class="pop-up__input" />
+        <button
+          class="pop-up__btn"
+          onclick="addNewList(document.getElementById('input-list-name').value,document.getElementsByClassName('todo__tasks')[0],this.closest('.pop-up').id)"
+        >
+          ADD
+        </button>
+      </div>
+      <div class="pop-up" id="notification">
+        <a class="pop-up__close">
+          <i
+            onclick="popupClose('notification')"
+            class="fas fa-times-circle"
+          ></i>
+        </a>
+        <div class="pop-up__header">Hi, I'm pure css</div>
+        <div class="pop-up__body">
+          <p>Check uncheck task</p>
+          <p>Add list, task</p>
+          <p>Hover around</p>
+        </div>
+      </div>
+      <div class="pop-up" id="loading-animation">
+        <div class="pop-up__body--animation material-icons"></div>
+      </div>
+    </div>
+    <main class="container">
+      <div class="todo">
+        <div class="todo__header">
+          <div class="todo__header__1">Tasks</div>
+          <div class="todo__header__2">Lists</div>
+          <div class="todo__header__3">
+            <i
+              onclick="popup('newTaskList')"
+              class="fas fa-plus-circle fa-lg"
+            ></i>
+            <span>Add List</span>
+          </div>
+        </div>
+        <div class="todo__tasks">
+          <div class="todo__tasks__list" id="01">
+            <div class="todo__tasks__list--fold"></div>
+            <div class="todo__tasks__list__name">
+              <a href="./index2.html">Trip to Paris</a>
+              <span
+                class="material-icons"
+                onclick="deleteTaskCard(this.parentNode.parentNode.id)"
+              ></span>
+            </div>
+            <div class="todo__tasks__list__task">
+              <input
+                type="checkbox"
+                onchange="changeStatus(this.parentNode)"
+                checked
+              />
+              <lable>Completed Task</lable>
+            </div>
+            <div class="todo__tasks__list__task">
+              <input type="checkbox" onchange="changeStatus(this.parentNode)" />
+              <lable>Plesae uncheck above task</lable>
+            </div>
+            <div class="todo__tasks__list__icon">
+              <span
+                class="material-icons"
+                onclick="newTask(this.closest('.todo__tasks__list'))"
+              ></span>
+              <span
+                class="material-icons"
+                onclick="deleteCompletedTask(this.parentNode.parentNode,this)"
+              ></span>
+            </div>
+          </div>
+          <div class="todo__tasks__list" id="02">
+            <div class="todo__tasks__list--fold"></div>
+            <div class="todo__tasks__list__name">
+              <a href="#">My Todo List</a>
+              <span
+                class="material-icons"
+                onclick="deleteTaskCard(this.parentNode.parentNode.id)"
+              ></span>
+            </div>
+            <div class="todo__tasks__list__task">
+              <input
+                type="checkbox"
+                onchange="changeStatus(this.parentNode)"
+                checked
+              />
+              <lable>Completed Task</lable>
+            </div>
+            <div class="todo__tasks__list__task">
+              <input type="checkbox" onchange="changeStatus(this.parentNode)" />
+              <lable>Press Add Lsit</lable>
+            </div>
+            <div class="todo__tasks__list__icon">
+              <span
+                class="material-icons"
+                onclick="newTask(this.closest('.todo__tasks__list'))"
+              ></span>
+              <span
+                class="material-icons"
+                onclick="deleteCompletedTask(this.parentNode.parentNode,this)"
+              ></span>
+            </div>
+          </div>
+          <div class="todo__tasks__list" id="03">
+            <div class="todo__tasks__list--fold"></div>
+            <div class="todo__tasks__list__name">
+              <a href="#">My Todo List</a>
+              <span
+                class="material-icons"
+                onclick="deleteTaskCard(this.parentNode.parentNode.id)"
+              ></span>
+            </div>
+            <div class="todo__tasks__list__task">
+              <input
+                type="checkbox"
+                onchange="changeStatus(this.parentNode)"
+                checked
+              />
+              <lable>Completed Task</lable>
+            </div>
+            <div class="todo__tasks__list__task">
+              <input type="checkbox" onchange="changeStatus(this.parentNode)" />
+              <lable>Check me</lable>
+            </div>
+            <div class="todo__tasks__list__icon">
+              <span
+                class="material-icons"
+                onclick="newTask(this.closest('.todo__tasks__list'))"
+              ></span>
+              <span
+                class="material-icons"
+                onclick="deleteCompletedTask(this.parentNode.parentNode,this)"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <a href="./index.html"><i class="fas fa-home"></i></a>
+      <a href="#disclaimer"><i class="fas fa-arrow-left"></i></a>
+      <a href="./index2.html"><i class="fas fa-arrow-right"></i></a>
+    </footer>
+  </body>
+  <script type="module" src="./script.js"></script>
+</html>
