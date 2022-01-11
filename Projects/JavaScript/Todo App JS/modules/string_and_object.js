@@ -1,5 +1,4 @@
 console.log("string_and_object.js");
-console.log("Object to string to objects functions");
 //string pre processing
 window.stringPreprocess = (s) => {
   s = s.replace(/\\/g, "\\\\");
@@ -53,7 +52,7 @@ Object.defineProperty(Object.prototype, "toObject", {
       return Object.fromString.bind(s)();
     }
     let reg =
-      /[{}\[\],:]|(?<=[,:{\[]")(?:(?:\\\\\\\\|[^\\"]).*?)(?:(?=\\\\\\\\")....|(?=[^\\]").(?="[:,\]}]))|(?<nonString>(?<=[{\[:,])\w+(?=[,:\]}]))|(?<=[,:{\[])(?<empty>"")(?=[:,\]}])/g;
+      /[{}\[\],:]|(?<=[,:{\[]").*?(?:(?=\\\\\\\\")....|(?=[^\\]").(?="[:,\]}]))|(?<nonString>(?<=[{\[:,])\w+(?=[,:\]}]))|(?<=[,:{\[])(?<empty>"")(?=[:,\]}])/g;
     let stack = [];
     stack.arrayShow = function () {
       if (this.length === 0) {

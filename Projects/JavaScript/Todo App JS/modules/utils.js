@@ -1,5 +1,8 @@
+import "./string_and_object.js";
+import { cardREG, tasksAllREG } from "./regex.js";
+console.log("utils.js");
 //creating dynamic elements
-export function buildElement(tag, attributes, text = "", style) {
+export function buildElement(tag, attributes, text = "", style = "") {
   const element = document.createElement(tag);
   if (typeof attributes === "object") {
     for (let attr in attributes) {
@@ -15,65 +18,90 @@ export function buildElement(tag, attributes, text = "", style) {
   return element;
 }
 //add new list
-export let creatreListCard = (name) => {
+export function creatreListCard(name, id) {
   let card = buildElement("div", { class: "todo__tasks__list" });
-  card.append(buildElement("div", { class: "todo__tasks__list--fold" }));
+  if (id != undefined) card.id = id;
   let temp = buildElement("div", { class: "todo__tasks__list__name" });
-  temp.append(buildElement("a", { href: "./index2.html" }, name));
   temp.append(
+    buildElement("a", { class: "todo__tasks__list__name__link" }, name)
+  );
+  temp.append(
+    buildElement("div", { class: "todo__tasks__list__name--delete" })
+  );
+  temp.children[1].append(
     buildElement("span", {
       class: "material-icons",
-      onclick: "deleteTaskCard(this.parentNode.parentNode.id)",
+      onclick: "deleteTaskCard(this.closest('.todo__tasks__list').id)",
     })
   );
+  let href = window.location.pathname;
+  href = href.slice(href.lastIndexOf("/") + 1);
+  if (href == "index.html")
+    temp.children[0].setAttribute("href", `./index2.html?card=${id}`);
+  else {
+    temp.append(
+      buildElement("div", { class: "todo__tasks__list__name--back" })
+    );
+    temp.children[2].append(
+      buildElement("a", { class: "material-icons", href: "./index.html" })
+    );
+  }
   card.append(temp);
   temp = buildElement("div", { class: "todo__tasks__list__icon" });
   temp.append(
-    buildElement(
-      "span",
-      {
-        class: "material-icons",
-        onclick: "addTask(this.closest('.todo__tasks__list__task'))",
-      },
-      "add_box"
-    )
+    buildElement("span", {
+      class: "material-icons",
+      onclick: "newTask(this.closest('.todo__tasks__list'))",
+    })
   );
   temp.append(
-    buildElement(
-      "span",
-      {
-        class: "material-icons",
-        onclick: "deleteList(this.closest('.todo__tasks__list__task'))",
-      },
-      "delete_sweep"
-    )
+    buildElement("span", {
+      class: "material-icons",
+      onclick: "deleteCompletedTask(this.closest('.todo__tasks__list'),this)",
+    })
   );
   card.append(temp);
   return card;
-};
+}
 //popup open
-export let popup = (id) => {
+export function popup(id) {
   let ele = document.getElementById(id);
-  ele.parentNode.style["z-index"] = 1;
-  if (document.querySelector(`#${id} .pop-up__close`) == null) {
-    ele.parentNode.setAttribute(
-      "onclick",
-      `if (event.target.id==='${ele.parentNode.id}') popupClose('${id}')`
-    );
+  if (id == "loading-animation") {
+    ele.style.opacity = 1;
+    ele.style.top = "50%";
+    ele.parentNode.style["z-index"] = 1;
+    ele.children[0].style.animation = "rotate 2s 2";
+    setTimeout(() => {
+      popupClose(id);
+    }, 2000);
+  } else {
+    ele.parentNode.style["z-index"] = 1;
+    ele.style.opacity = 1;
+    ele.style.top = "50%";
   }
-  ele.style["opacity"] = 1;
-  ele.style["top"] = "50%";
-};
+  if (ele.querySelector(`#${id} .pop-up__close`) == null) {
+    ele.parentNode.addEventListener("click", (event) => {
+      if (event.target.id === ele.parentNode.id) {
+        popupClose(id);
+        event.target.removeEventListener("click", (event) => {
+          if (event.target.id === ele.parentNode.id) {
+            popupClose(id);
+            event.target.removeEventListener("click");
+          }
+        });
+      }
+    });
+  }
+}
 //popup close
-export let popupClose = (id) => {
+export function popupClose(id) {
   let ele = document.getElementById(id);
-  ele.style = {};
+  ele.style.top = 0;
   setTimeout(() => {
-    ele = ele.parentNode;
-    ele.removeAttribute("onclick");
     ele.style = {};
+    ele.parentNode.style = {};
   }, 100);
-};
+}
 //tasklist to object
 export function taskToObject(ele) {
   let object = {};
@@ -83,8 +111,8 @@ export function taskToObject(ele) {
 }
 export function cardToObject(ele) {
   let object = {};
-  object.id = ele.id;
-  object.name = ele.children[1].children[0].innerText;
+  object.id = String(ele.id);
+  object.name = ele.children[0].children[0].innerText;
   object.tasks = [];
   let tasks = ele.querySelectorAll(".todo__tasks__list__task");
   if (typeof tasks == "object") {
@@ -94,12 +122,13 @@ export function cardToObject(ele) {
 }
 //object to tasklist
 export function ObjectToCard(object) {
-  let card = creatreListCard(object.name);
-  card.id = object.id;
-  let before = card.querySelector(".todo__tasks__list__icon");
+  let card = creatreListCard(object.name, object.id);
+  let tasks = buildElement("div", { class: "todo__tasks__list__task--scroll" });
   for (let task of object.tasks) {
-    card.insertBefore(createTask(task.name, task.status), before);
+    tasks.append(createTask(task.name, task.status));
   }
+  card.insertBefore(tasks, card.children[1]);
+  return card;
 }
 //add task
 export function createTask(taskname, isDone = false) {
@@ -117,8 +146,7 @@ export function createTask(taskname, isDone = false) {
 }
 //find card
 export function findCard(id) {
-  let reg = `(?<=[\\[,]){"id":"${id}",.*?,"tasks":\\[.*?\\]}(?=[,\\]])`;
-  reg = new RegExp(reg, "i");
+  let reg = new RegExp(cardREG(id));
   reg = reg.exec(window.sessionStorage.tasklists);
   let card = [reg[0]];
   card.index = reg.index;
@@ -127,9 +155,11 @@ export function findCard(id) {
 //find all task in tasks
 export function findAllTasks(id) {
   let temp = findCard(id);
-  let tasks = /,"tasks":\[(?<tasks>.*?)\]/.exec(temp[0]);
-  tasks.index += temp.index + 10;
-  temp = [tasks.groups.tasks];
+  if (temp == null) return null;
+  let reg = new RegExp(tasksAllREG(id));
+  let tasks = reg.exec(temp[0]);
+  tasks.index += temp.index;
+  temp = [tasks[0]];
   temp.index = tasks.index;
   return temp;
 }
@@ -137,6 +167,9 @@ export function findAllTasks(id) {
 export function sessionStorageUpdate(foundat, length, ...strings) {
   if (strings.length) {
     strings = strings.reduce((previous, ele) => {
+      if (previous == "") return ele;
+      if (ele == "") return previous;
+      if (previous == "," || ele == ",") return previous + ele;
       return previous + "," + ele;
     });
   } else strings = "";
