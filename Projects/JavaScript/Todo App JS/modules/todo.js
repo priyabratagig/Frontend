@@ -24,13 +24,11 @@ window.generateNextNumber = (() => {
     let i = 0;
     let k;
     while (true) {
-      if (k === undefined) k = yield i++;
-      else
-        yield (() => {
-          i = k;
-          k = undefined;
-          return i++;
-        })();
+      if (typeof k === "number") {
+        i = k;
+        k = undefined;
+      }
+      k = yield i++;
     }
   })();
   return (k) => {
@@ -71,6 +69,7 @@ window.newTask = (card) => {
   ele.children[0].style.display = "none";
   ele.children[1].style.display = "none";
   ele.append(inputbox);
+  inputbox.children[1].focus();
 };
 window.saveTask = (card, name) => {
   card.querySelector(".todo__tasks__list__task--input").remove();
@@ -94,8 +93,9 @@ window.saveTask = (card, name) => {
 };
 //add new list
 window.addNewList = function (name, popup) {
-  let listcard = creatreListCard(name, generateNextNumber());
+  let listcard = creatreListCard(name, window.generateNextNumber());
   document.getElementsByClassName("todo__tasks")[0].append(listcard);
+  document.querySelector(`#${popup} input`).value = "";
   popupClose(popup);
   if (window.sessionStorage.tasklists == undefined)
     window.sessionStorage.tasklists = [cardToObject(listcard)].toString();

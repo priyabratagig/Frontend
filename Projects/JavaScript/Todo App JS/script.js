@@ -3,6 +3,9 @@ import { cardToObject, ObjectToCard } from "./modules/utils.js";
 console.log("script.js");
 // window.sessionStorage.tasklists =
 //   '[{"id":"01","name":"Trip to Paris","tasks":[{"name":"Completed Task","status":true},{"name":"Plesae uncheck above task","status":false}]},{"id":"02","name":"My Todo List","tasks":[{"name":"Completed Task","status":true},{"name":"Press Add Lsit","status":false}]},{"id":"03","name":"My Todo List","tasks":[{"name":"Completed Task","status":true},{"name":"Check me","status":false}]}]';
+//generator wasting first .next() to pass argument
+window.generateNextNumber();
+//loading from taskslists
 if (
   window.sessionStorage.tasklists != undefined &&
   window.sessionStorage.tasklists.length
@@ -12,5 +15,5 @@ if (
     taskcard = ObjectToCard(taskcard);
     todo.append(taskcard);
   }
-  window.generateNextNumber(todo.lastChild.id);
+  window.generateNextNumber(Number(todo.lastChild.id));
 } else window.popup("notification");

@@ -52,11 +52,6 @@ body {
 }
 
 .todo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
   height: 100%;
   display: -ms-grid;
   display: grid;
@@ -102,16 +97,15 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 1rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
 }
 
-.todo__header__3 i {
+.todo__header__3 div[class="material-icons"] {
   font-size: 3rem;
-  width: 3rem;
+  width: 3.2rem;
   color: var(--primary-color);
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
@@ -120,17 +114,22 @@ body {
       flex-shrink: 0;
 }
 
-.todo__header__3 i:hover, .todo__header__3 i:active {
+.todo__header__3 div[class="material-icons"]::after {
+  content: "add_circle";
+}
+
+.todo__header__3 div[class="material-icons"]:hover, .todo__header__3 div[class="material-icons"]:active {
   font-size: 3.2rem;
   color: var(--secondary-color);
   -webkit-transform: translateY(-10%);
           transform: translateY(-10%);
 }
 
-.todo__header__3 i:active {
-  font-size: 2.8rem;
+.todo__header__3 div[class="material-icons"]:active {
+  font-size: 3rem;
   -webkit-transform: translateY(25%);
           transform: translateY(25%);
+  color: var(--tersiary-color);
 }
 
 .todo__tasks {
@@ -157,6 +156,9 @@ body {
   margin-bottom: 1em;
   -webkit-box-shadow: 0 0.5em rgba(0, 0, 0, 0.1);
           box-shadow: 0 0.5em rgba(0, 0, 0, 0.1);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .todo__tasks__list__name {
@@ -329,10 +331,12 @@ body {
 
 .pop-up {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  top: 0;
+  opacity: 0;
   background: white;
   border: thin solid var(--popup-border);
   border-radius: 0.5em;
@@ -343,7 +347,6 @@ body {
   font-size: 2rem;
   -webkit-transition: opacity 0.1s ease-out, top 0.5s;
   transition: opacity 0.1s ease-out, top 0.5s;
-  opacity: 0;
   min-width: 80vw;
   max-height: 80vh;
   -ms-grid-rows: min-content min-content;
@@ -444,8 +447,27 @@ body {
   content: 'autorenew';
 }
 
+.pop-up__body--primary {
+  background-image: -webkit-gradient(linear, left top, right top, from(white), color-stop(80%, yellow), to(white));
+  background-image: linear-gradient(to right, white, yellow 80%, white);
+}
+
+.pop-up__body--secondary {
+  background-image: -webkit-gradient(linear, left top, right top, from(white), color-stop(aqua), to(white));
+  background-image: linear-gradient(to right, white, aqua, white);
+}
+
+.pop-up__body--tertiary {
+  color: slategray;
+}
+
+.pop-up__body code {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
 .pop-up__body > *:nth-child(n+2) {
-  margin-bottom: .5em;
+  margin-top: .5em;
 }
 
 #loading-animation {
@@ -454,9 +476,14 @@ body {
 
 @media (min-width: 44em) {
   .todo {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -20%);
+            transform: translate(-50%, -20%);
     height: unset;
-    max-height: 100%;
-    width: 95vw;
+    max-height: 90vh;
+    width: 90vw;
   }
   .todo__header {
     -ms-grid-columns: min-content min-content auto;
@@ -476,6 +503,17 @@ body {
     grid-column: 3/3;
     -ms-grid-row: 1;
     grid-row: 1/1;
+    gap: 1rem;
+  }
+  .todo__header__3 div[class="material-icons"] {
+    font-size: 4rem;
+    width: 4.2rem;
+  }
+  .todo__header__3 div[class="material-icons"]:hover, .todo__header__3 div[class="material-icons"]:active {
+    font-size: 4.2rem;
+  }
+  .todo__header__3 div[class="material-icons"]:active {
+    font-size: 4rem;
   }
   .todo__tasks {
     display: -webkit-box;
@@ -495,10 +533,24 @@ body {
             flex: 0 0 32%;
     -webkit-box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.1);
             box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.1);
+    max-height: 40vw;
+  }
+  .todo__tasks__list__task--scroll {
+    overflow-y: scroll;
   }
   .pop-up {
     min-width: 40%;
     min-height: 21%;
+  }
+}
+
+@media (max-width: 43em) {
+  .todo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
   }
 }
 /*# sourceMappingURL=style.css.map */
