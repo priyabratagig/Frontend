@@ -172,11 +172,14 @@ body {
             display: flex;
             align-items: center;
             gap: 0.5em;
+            margin: .5rem 0;
 
             textarea {
                 font-size: 2rem;
                 width: 80%;
                 resize: vertical;
+                border: .1rem solid var(--popup-primary-color);
+                border-radius: .2em;
             }
 
             lable {
@@ -271,11 +274,11 @@ body {
     padding: 0.5em;
     display: grid;
     place-items: center stretch;
-    font-size: 1.5rem;
-    transition: opacity 0.1s ease-out,
-    top 0.5s;
+    font-size: 2rem;
+    transition: opacity 0.1s ease-out, top 0.5s;
     opacity: 0;
-    max-height: 90vh;
+    min-width: 80vw;
+    max-height: 80vh;
     grid-template-rows: min-content min-content;
     grid-auto-rows: 1fr;
 
@@ -292,6 +295,7 @@ body {
     }
 
     &__header {
+        font-size: inherit;
         color: var(--primary-color);
         justify-self: center;
     }
@@ -301,18 +305,18 @@ body {
         place-self: end;
         color: var(--popup-primary-color);
 
-        &:hover {
-            font-size: 1.2rem;
-            color: var(--popup-secondary-color);
+        &:hover,
+        &:active {
+            font-size: .8em;
         }
 
         &:active {
-            transform: translateY(10%);
+            transform: translateY(5%);
         }
     }
 
     &__input {
-        font-size: 2rem;
+        font-size: inherit;
         color: var(--popup-primary-color);
         border: thin solid var(--primary-color);
         border-radius: 0.2em;
@@ -320,11 +324,12 @@ body {
         &:focus {
             outline: var(--secondary-color) solid 1px;
             color: black;
-            font-size: 2.1rem;
+            font-size: 1.1em;
         }
     }
 
     &__btn {
+        font-size: inherit;
         background: var(--primary-color);
         border-radius: 0.5em;
         padding: 0.1em 1.5em;
@@ -334,7 +339,7 @@ body {
 
         &:hover,
         &:active {
-            font-size: 1.3rem;
+            font-size: .8em;
             box-shadow: 0.1em 0.2em rgba(0, 0, 0, 0.25);
             transform: translateY(-10%);
         }
@@ -357,7 +362,6 @@ body {
             color: transparent;
             font-size: 5rem;
             background-clip: text;
-            animation: rotate 2s infinite;
 
             &::after {
                 content: 'autorenew';
@@ -396,22 +400,5 @@ body {
     .pop-up {
         min-width: 40%;
         min-height: 21%;
-
-        &__header {
-            font-size: 2rem;
-        }
-
-        &__btn {
-            font-size: 2rem;
-
-            &:hover,
-            &:active {
-                font-size: 1.8rem;
-            }
-
-            &:active {
-                font-size: 1.5rem;
-            }
-        }
     }
 }

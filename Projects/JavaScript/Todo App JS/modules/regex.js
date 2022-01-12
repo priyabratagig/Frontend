@@ -1,4 +1,7 @@
 console.log("regex.js");
+//string to object regex
+export const objectKeyValueREG =
+  /[{}\[\],:]|(?<=[,:{\[]").*?(?:(?=\\\\\\\\")....|(?=[^\\]").(?="[:,\]}]))|(?<nonString>(?<=[{\[:,])\w+(?=[,:\]}]))|(?<=[,:{\[])(?<empty>"")(?=[:,\]}])/g;
 //taskcard regex
 export const cardREG = (id) => {
   return `(?<=[\\[,]){"id":"${id}","name":".*?","tasks":\\[.*?\\]}(?=\\]$|,{"id")`;

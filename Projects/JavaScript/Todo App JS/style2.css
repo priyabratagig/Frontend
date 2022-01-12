@@ -201,12 +201,15 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 0.5em;
+  margin: .5rem 0;
 }
 
 .todo__tasks__list__task--input textarea {
   font-size: 2rem;
   width: 80%;
   resize: vertical;
+  border: 0.1rem solid var(--popup-primary-color);
+  border-radius: .2em;
 }
 
 .todo__tasks__list__task--input lable {
@@ -318,11 +321,12 @@ body {
   display: -ms-grid;
   display: grid;
   place-items: center stretch;
-  font-size: 1.5rem;
-  -webkit-transition: opacity 0.1s ease-out, top 0.5s;
-  transition: opacity 0.1s ease-out, top 0.5s;
+  font-size: 2rem;
+  -webkit-transition: opacity 0.1s ease-out, top 0.5s;
+  transition: opacity 0.1s ease-out, top 0.5s;
   opacity: 0;
-  max-height: 90vh;
+  min-width: 80vw;
+  max-height: 80vh;
   -ms-grid-rows: min-content min-content;
       grid-template-rows: -webkit-min-content -webkit-min-content;
       grid-template-rows: min-content min-content;
@@ -342,6 +346,7 @@ body {
 }
 
 .pop-up__header {
+  font-size: inherit;
   color: var(--primary-color);
   -ms-grid-column-align: center;
       justify-self: center;
@@ -354,18 +359,17 @@ body {
   color: var(--popup-primary-color);
 }
 
-.pop-up__close:hover {
-  font-size: 1.2rem;
-  color: var(--popup-secondary-color);
+.pop-up__close:hover, .pop-up__close:active {
+  font-size: .8em;
 }
 
 .pop-up__close:active {
-  -webkit-transform: translateY(10%);
-          transform: translateY(10%);
+  -webkit-transform: translateY(5%);
+          transform: translateY(5%);
 }
 
 .pop-up__input {
-  font-size: 2rem;
+  font-size: inherit;
   color: var(--popup-primary-color);
   border: thin solid var(--primary-color);
   border-radius: 0.2em;
@@ -374,10 +378,11 @@ body {
 .pop-up__input:focus {
   outline: var(--secondary-color) solid 1px;
   color: black;
-  font-size: 2.1rem;
+  font-size: 1.1em;
 }
 
 .pop-up__btn {
+  font-size: inherit;
   background: var(--primary-color);
   border-radius: 0.5em;
   padding: 0.1em 1.5em;
@@ -388,7 +393,7 @@ body {
 }
 
 .pop-up__btn:hover, .pop-up__btn:active {
-  font-size: 1.3rem;
+  font-size: .8em;
   -webkit-box-shadow: 0.1em 0.2em rgba(0, 0, 0, 0.25);
           box-shadow: 0.1em 0.2em rgba(0, 0, 0, 0.25);
   -webkit-transform: translateY(-10%);
@@ -414,8 +419,6 @@ body {
   color: transparent;
   font-size: 5rem;
   background-clip: text;
-  -webkit-animation: rotate 2s infinite;
-          animation: rotate 2s infinite;
 }
 
 .pop-up__body--animation::after {
@@ -462,18 +465,6 @@ body {
   .pop-up {
     min-width: 40%;
     min-height: 21%;
-  }
-  .pop-up__header {
-    font-size: 2rem;
-  }
-  .pop-up__btn {
-    font-size: 2rem;
-  }
-  .pop-up__btn:hover, .pop-up__btn:active {
-    font-size: 1.8rem;
-  }
-  .pop-up__btn:active {
-    font-size: 1.5rem;
   }
 }
 /*# sourceMappingURL=style2.css.map */

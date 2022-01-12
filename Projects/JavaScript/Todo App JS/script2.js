@@ -23,7 +23,7 @@ console.log("script2.js");
 const deleteTaskCard = window.deleteTaskCard;
 window.deleteTaskCard = (id) => {
   deleteTaskCard(id);
-  redirectToHome();
+  setTimeout(redirectToHome, 1500);
 };
 //redirect to home page
 function redirectToHome() {

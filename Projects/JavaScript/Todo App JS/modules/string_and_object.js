@@ -1,3 +1,4 @@
+import { objectKeyValueREG } from "./regex.js";
 console.log("string_and_object.js");
 //string pre processing
 window.stringPreprocess = (s) => {
@@ -51,8 +52,7 @@ Object.defineProperty(Object.prototype, "toObject", {
     if (typeof s == "string") {
       return Object.fromString.bind(s)();
     }
-    let reg =
-      /[{}\[\],:]|(?<=[,:{\[]").*?(?:(?=\\\\\\\\")....|(?=[^\\]").(?="[:,\]}]))|(?<nonString>(?<=[{\[:,])\w+(?=[,:\]}]))|(?<=[,:{\[])(?<empty>"")(?=[:,\]}])/g;
+    let reg = objectKeyValueREG;
     let stack = [];
     stack.arrayShow = function () {
       if (this.length === 0) {
