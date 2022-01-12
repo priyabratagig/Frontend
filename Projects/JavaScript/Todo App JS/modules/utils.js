@@ -79,7 +79,7 @@ export function popup(id) {
     ele.style.opacity = 1;
     ele.style.top = "50%";
   }
-  ele.querySelector("input, textarea").focus();
+  if (id == "newTaskList") ele.querySelector("input, textarea").focus();
   if (ele.querySelector(`#${id} .pop-up__close`) == null) {
     ele.parentNode.addEventListener("click", (event) => {
       if (event.target.id === ele.parentNode.id) {
