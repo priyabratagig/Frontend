@@ -319,9 +319,14 @@ body {
   display: grid;
   place-items: center stretch;
   font-size: 1.5rem;
-  -webkit-transition: opacity 0.1s ease-out, top 0.5s;
-  transition: opacity 0.1s ease-out, top 0.5s;
+  -webkit-transition: opacity 0.1s ease-out, top 0.5s;
+  transition: opacity 0.1s ease-out, top 0.5s;
   opacity: 0;
+  max-height: 90vh;
+  -ms-grid-rows: min-content min-content;
+      grid-template-rows: -webkit-min-content -webkit-min-content;
+      grid-template-rows: min-content min-content;
+  grid-auto-rows: 1fr;
 }
 
 .pop-up__container {
@@ -397,6 +402,7 @@ body {
 }
 
 .pop-up__body {
+  height: 100%;
   color: var(--popup-primary-color);
   margin: 2rem;
   word-spacing: 0.5em;
