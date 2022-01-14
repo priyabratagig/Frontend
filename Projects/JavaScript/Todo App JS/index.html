@@ -30,40 +30,47 @@
             close
           </span>
         </a>
-        <div class="pop-up__header">Hi, I'm pure JS</div>
+        <div class="pop-up__header">Hi, I'm todo JS 🤖</div>
         <div class="pop-up__body">
-          <p>Please show love to my hard work check all codes too</p>
+          <p>
+            Please show some love to my hard work and check all the codes too💖
+          </p>
           <li class="pop-up__body--primary">
-            I have built my won library to prase objects and arrays to string
-            and reverse like <code>JSON.parse</code> and
+            I've built my won library to prase objects and arrays to string and
+            reverse as replica of <code>JSON.parse()</code> and
             <code>JSON.strinigfy()</code>
           </li>
           <li class="pop-up__body--secondary">
-            Made the code modular and reusable like DRY(don't repeat yourself)
-            ideology and distributed among JS files
-          </li>
-          <li class="pop-up__body--tertiary">
-            Used complex <code>Regex</code> to build the library
+            Made the code modular and reusable following DRY (don't repeat
+            yourself) ideology and distributed among other files
           </li>
           <li class="pop-up__body--primary">
             Implemented <code>Generator function</code> for infinitely
             generating next <code>id</code> for task-list
           </li>
           <li class="pop-up__body--secondary">
-            Used <code>SCSS</code> css preprocessor to style the elements
+            Discovered event propagation event bubbling event capture
           </li>
           <li class="pop-up__body--primary">
+            Used <code>SCSS</code> css preprocessor to style the elements
+          </li>
+          <li class="pop-up__body--secondary">
+            Used complex <code>Regex</code> to build the library. Learned
+            <code>Unicode</code> implementation in javascript regex
+          </li>
+          <li class="pop-up__body--tertiary">
             Used <code>Window.sessionStorage</code> to store the data that's
             dependent to browser's <code>tab</code> to make
             <code>tab</code> independent just replace
             <code>window.sessionStoreage</code> to
             <code>window.localStoreage</code>
           </li>
-          <li>This app has functionalities such as</li>
-          <li>
+          <li class="pop-up__body--tertiary">
+            This app has functionalities such as <br />
             a) create a task-list b) delete task-list c) add a task d) toggle
             task status and d) delete completed task
           </li>
+          <li>Emojis also accepted, it works fine😋</li>
         </div>
       </div>
       <div class="pop-up" id="loading-animation">
@@ -82,104 +89,7 @@
             <span>Add List</span>
           </div>
         </div>
-        <div class="todo__tasks">
-          <!-- <div class="todo__tasks__list" id="01">
-            <div class="todo__tasks__list--fold"></div>
-            <div class="todo__tasks__list__name">
-              <a href="./index2.html">Trip to Paris</a>
-              <span
-                class="material-icons"
-                onclick="deleteTaskCard(this.parentNode.parentNode.id)"
-              ></span>
-            </div>
-            <div class="todo__tasks__list__task">
-              <input
-                type="checkbox"
-                onchange="changeStatus(this.parentNode)"
-                checked
-              />
-              <lable>Completed Task</lable>
-            </div>
-            <div class="todo__tasks__list__task">
-              <input type="checkbox" onchange="changeStatus(this.parentNode)" />
-              <lable>Plesae uncheck above task</lable>
-            </div>
-            <div class="todo__tasks__list__icon">
-              <span
-                class="material-icons"
-                onclick="newTask(this.closest('.todo__tasks__list'))"
-              ></span>
-              <span
-                class="material-icons"
-                onclick="deleteCompletedTask(this.parentNode.parentNode,this)"
-              ></span>
-            </div>
-          </div>
-          <div class="todo__tasks__list" id="02">
-            <div class="todo__tasks__list--fold"></div>
-            <div class="todo__tasks__list__name">
-              <a href="#">My Todo List</a>
-              <span
-                class="material-icons"
-                onclick="deleteTaskCard(this.parentNode.parentNode.id)"
-              ></span>
-            </div>
-            <div class="todo__tasks__list__task">
-              <input
-                type="checkbox"
-                onchange="changeStatus(this.parentNode)"
-                checked
-              />
-              <lable>Completed Task</lable>
-            </div>
-            <div class="todo__tasks__list__task">
-              <input type="checkbox" onchange="changeStatus(this.parentNode)" />
-              <lable>Press Add Lsit</lable>
-            </div>
-            <div class="todo__tasks__list__icon">
-              <span
-                class="material-icons"
-                onclick="newTask(this.closest('.todo__tasks__list'))"
-              ></span>
-              <span
-                class="material-icons"
-                onclick="deleteCompletedTask(this.parentNode.parentNode,this)"
-              ></span>
-            </div>
-          </div>
-          <div class="todo__tasks__list" id="03">
-            <div class="todo__tasks__list--fold"></div>
-            <div class="todo__tasks__list__name">
-              <a href="#">My Todo List</a>
-              <span
-                class="material-icons"
-                onclick="deleteTaskCard(this.parentNode.parentNode.id)"
-              ></span>
-            </div>
-            <div class="todo__tasks__list__task">
-              <input
-                type="checkbox"
-                onchange="changeStatus(this.parentNode)"
-                checked
-              />
-              <lable>Completed Task</lable>
-            </div>
-            <div class="todo__tasks__list__task">
-              <input type="checkbox" onchange="changeStatus(this.parentNode)" />
-              <lable>Check me</lable>
-            </div>
-            <div class="todo__tasks__list__icon">
-              <span
-                class="material-icons"
-                onclick="newTask(this.closest('.todo__tasks__list'))"
-              ></span>
-              <span
-                class="material-icons"
-                onclick="deleteCompletedTask(this.parentNode.parentNode,this)"
-              ></span>
-            </div>
-          </div> -->
-        </div>
+        <div class="todo__tasks"></div>
       </div>
     </main>
   </body>

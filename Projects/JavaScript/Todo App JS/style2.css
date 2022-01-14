@@ -90,15 +90,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   color: var(--primary-color);
-}
-
-.todo__tasks__list__name__link::after, .todo__tasks__list__name__link::before {
-  content: " ";
-  border: 0.1rem var(--popup-hover-color) solid;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
 }
 
 .todo__tasks__list__name--delete {
@@ -178,12 +173,13 @@ body {
   font-family: monospace;
   color: var(--pending-task-color);
   overflow-y: scroll;
+  margin: 1.5rem 0;
 }
 
 .todo__tasks__list__task input[type="checkbox"] {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
-  margin-left: 1rem;
+  margin: .5rem;
 }
 
 .todo__tasks__list__task input[type="checkbox"]:checked {
@@ -312,10 +308,12 @@ body {
 
 .pop-up {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  top: 0;
+  opacity: 0;
   background: white;
   border: thin solid var(--popup-border);
   border-radius: 0.5em;
@@ -326,13 +324,13 @@ body {
   font-size: 2rem;
   -webkit-transition: opacity 0.1s ease-out, top 0.5s;
   transition: opacity 0.1s ease-out, top 0.5s;
-  opacity: 0;
   min-width: 80vw;
   max-height: 80vh;
   -ms-grid-rows: min-content min-content;
       grid-template-rows: -webkit-min-content -webkit-min-content;
       grid-template-rows: min-content min-content;
   grid-auto-rows: 1fr;
+  visibility: collapse;
 }
 
 .pop-up__container {
@@ -418,17 +416,39 @@ body {
 
 .pop-up__body--animation {
   place-self: center;
-  color: transparent;
   font-size: 5rem;
   background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-animation: rotate 1.5s;
+          animation: rotate 1.5s;
 }
 
 .pop-up__body--animation::after {
   content: 'autorenew';
 }
 
+.pop-up__body--primary {
+  background-image: -webkit-gradient(linear, left top, right top, from(white), color-stop(80%, yellow), to(white));
+  background-image: linear-gradient(to right, white, yellow 80%, white);
+}
+
+.pop-up__body--secondary {
+  background-image: -webkit-gradient(linear, left top, right top, from(white), color-stop(aqua), to(white));
+  background-image: linear-gradient(to right, white, aqua, white);
+}
+
+.pop-up__body--tertiary {
+  color: slategray;
+}
+
+.pop-up__body code {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
 .pop-up__body > *:nth-child(n+2) {
-  margin-bottom: .5em;
+  margin-top: .5em;
 }
 
 #loading-animation {

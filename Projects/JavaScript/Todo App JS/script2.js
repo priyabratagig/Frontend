@@ -1,5 +1,5 @@
 import "./modules/todo.js";
-import { cardSearchREG, cardREG } from "./modules/regex.js";
+import { urlSearchParamREG, cardREG } from "./modules/regex.js";
 import { ObjectToCard } from "./modules/utils.js";
 console.log("script2.js");
 // window.sessionStorage.tasklists =
@@ -9,10 +9,9 @@ console.log("script2.js");
   let card;
   if (window.sessionStorage.tasklists == undefined) redirectToHome();
   else if (search.length == 0) {
-    card = new RegExp(cardREG(".*?"));
-    card = card.exec(window.sessionStorage.tasklists)[0];
+    card = cardREG(".*?").exec(window.sessionStorage.tasklists)[0];
   } else if (search.length) {
-    search = String(cardSearchREG.exec(search)[0]);
+    search = String(urlSearchParamREG.exec(search)[0]);
     card = new RegExp(cardREG(search));
     card = card.exec(window.sessionStorage.tasklists)[0];
   } else if (card == null) redirectToHome();

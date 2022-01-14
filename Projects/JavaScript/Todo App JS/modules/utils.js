@@ -51,7 +51,7 @@ export function creatreListCard(name, id) {
   temp.append(
     buildElement("span", {
       class: "material-icons",
-      onclick: "newTask(this.closest('.todo__tasks__list'))",
+      onclick: "taskInputToggle(this.closest('.todo__tasks__list'))",
     })
   );
   temp.append(
@@ -63,45 +63,53 @@ export function creatreListCard(name, id) {
   card.append(temp);
   return card;
 }
+//pop container active child count
+let popCounter = 0;
 //popup open
 export function popup(id) {
+  popCounter++;
   let ele = document.getElementById(id);
   if (id == "loading-animation") {
+    ele.style.visibility = "visible";
     ele.style.opacity = 1;
     ele.style.top = "50%";
     ele.parentNode.style["z-index"] = 1;
-    ele.children[0].style.animation = "rotate 2s 2";
+    ele.children[0].style.animationIterationCount = "infinite";
     setTimeout(() => {
-      popupClose(id);
-    }, 2000);
+      if (ele.hasAttribute("style")) popupClose(ele.id);
+    }, 3000);
   } else {
     ele.parentNode.style["z-index"] = 1;
+    ele.style.visibility = "visible";
     ele.style.opacity = 1;
     ele.style.top = "50%";
   }
   if (id == "newTaskList") ele.querySelector("input, textarea").focus();
-  if (ele.querySelector(`#${id} .pop-up__close`) == null) {
-    ele.parentNode.addEventListener("click", (event) => {
-      if (event.target.id === ele.parentNode.id) {
-        popupClose(id);
-        event.target.removeEventListener("click", (event) => {
-          if (event.target.id === ele.parentNode.id) {
-            popupClose(id);
-            event.target.removeEventListener("click");
-          }
-        });
-      }
-    });
-  }
+  if (ele.querySelector(`#${id} .pop-up__close`) == null)
+    ele.parentNode.setAttribute(
+      "onclick",
+      `if(event.target.id == this.id) popupClose('${id}')`
+    );
 }
 //popup close
 export function popupClose(id) {
+  popCounter--;
   let ele = document.getElementById(id);
-  ele.style.top = 0;
-  setTimeout(() => {
-    ele.style = {};
-    ele.parentNode.style = {};
-  }, 100);
+  if (id == "loading-animation") {
+    if (popCounter == 0) {
+      ele.parentNode.removeAttribute("onclick");
+      ele.parentNode.removeAttribute("style");
+    }
+    ele.removeAttribute("style");
+  } else {
+    ele.removeAttribute("style");
+    setTimeout(() => {
+      if (popCounter == 0) {
+        ele.parentNode.removeAttribute("onclick");
+        ele.parentNode.removeAttribute("style");
+      }
+    }, 100);
+  }
 }
 //tasklist to object
 export function taskToObject(ele) {
@@ -147,7 +155,7 @@ export function createTask(taskname, isDone = false) {
 }
 //find card
 export function findCard(id) {
-  let reg = new RegExp(cardREG(id));
+  let reg = cardREG(id);
   reg = reg.exec(window.sessionStorage.tasklists);
   let card = [reg[0]];
   card.index = reg.index;
@@ -157,7 +165,7 @@ export function findCard(id) {
 export function findAllTasks(id) {
   let temp = findCard(id);
   if (temp == null) return null;
-  let reg = new RegExp(tasksAllREG(id));
+  let reg = tasksAllREG(id);
   let tasks = reg.exec(temp[0]);
   tasks.index += temp.index;
   temp = [tasks[0]];
