@@ -270,6 +270,7 @@ body {
 
 .todo__tasks__list__icon span:last-child {
   background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .todo__tasks__list__icon span:last-child::after {
