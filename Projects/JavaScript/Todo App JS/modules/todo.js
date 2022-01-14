@@ -62,6 +62,8 @@ window.taskInputToggle = (card) => {
     ele.children[0].removeAttribute("style");
     ele.children[1].removeAttribute("style");
   } else {
+    ele.children[0].style.display = "none";
+    ele.children[1].style.display = "none";
     let inputbox = buildElement("div", {
       class: "todo__tasks__list__task--input",
     });
@@ -84,8 +86,6 @@ window.taskInputToggle = (card) => {
           "if (event.key == 'Enter') saveTask(this.closest('.todo__tasks__list'),this.value);",
       })
     );
-    ele.children[0].style.display = "none";
-    ele.children[1].style.display = "none";
     ele.append(inputbox);
     ele.children[2].children[1].focus();
     let clickfn = (event) => {
