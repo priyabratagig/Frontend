@@ -27,6 +27,8 @@ export const taskCompletedREG = (id) => {
   let reg = `^{"name":".*?","status":true}$`;
   return new RegExp(reg);
 };
+//name regex
+export const nameREG = /(?<=,"name":").*?(?=","tasks":\[)/;
 //extra comma
 export const commaREG =
   /(?<=\[),+(?={"(?:id|name)":)|(?<=},),+(?={"(?:id|name)":)|,+(?=\]$|\]}(?:,+{"id":|,*\]$))|(?<=,"tasks":\[),+(?=\]$)/g;

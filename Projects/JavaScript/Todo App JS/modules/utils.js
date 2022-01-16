@@ -25,10 +25,17 @@ export function creatreListCard(name, id) {
   temp.append(
     buildElement("a", { class: "todo__tasks__list__name__link" }, name)
   );
+  temp.append(buildElement("div", { class: "todo__tasks__list__name--edit" }));
+  temp.children[1].append(
+    buildElement("span", {
+      class: "material-icons",
+      onclick: "changeCardName(this.closest('.todo__tasks__list').id)",
+    })
+  );
   temp.append(
     buildElement("div", { class: "todo__tasks__list__name--delete" })
   );
-  temp.children[1].append(
+  temp.children[2].append(
     buildElement("span", {
       class: "material-icons",
       onclick: "deleteTaskCard(this.closest('.todo__tasks__list').id)",
@@ -42,7 +49,7 @@ export function creatreListCard(name, id) {
     temp.append(
       buildElement("div", { class: "todo__tasks__list__name--back" })
     );
-    temp.children[2].append(
+    temp.children[3].append(
       buildElement("a", { class: "material-icons", href: "./index.html" })
     );
   }
@@ -51,7 +58,7 @@ export function creatreListCard(name, id) {
   temp.append(
     buildElement("span", {
       class: "material-icons",
-      onclick: "taskInputToggle(this.closest('.todo__tasks__list'))",
+      onclick: "taskInput(this.closest('.todo__tasks__list'))",
     })
   );
   temp.append(
@@ -141,7 +148,10 @@ export function ObjectToCard(object) {
 }
 //add task
 export function createTask(taskname, isDone = false) {
-  let task = buildElement("div", { class: "todo__tasks__list__task" });
+  let task = buildElement("div", {
+    class: "todo__tasks__list__task",
+    ondblclick: "taskMod(this.closest('.todo__tasks__list').id,this)",
+  });
   task.append(
     buildElement("input", {
       type: "checkbox",

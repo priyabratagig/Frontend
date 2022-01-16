@@ -6,6 +6,7 @@ import {
   cntrl,
   separator,
   stringTrim,
+  nameREG,
 } from "./regex.js";
 import {
   buildElement,
@@ -47,55 +48,64 @@ const trim = (s) => {
   }
   return s;
 };
+//inputbox maker
+export function createInputBox(fname, ...fagrs) {
+  if (fagrs.length) {
+    fagrs = fagrs.reduce((previous, current) => previous + ", " + current);
+    fagrs += ", ";
+  } else fagrs = "";
+  let inputbox = buildElement("div", {
+    class: "todo__tasks__list__task--input",
+  });
+  inputbox.id = "inputbox";
+  inputbox.append(
+    buildElement(
+      "lable",
+      {
+        class: "material-icons",
+        onclick: `${fname}(${fagrs}document.getElementById('input-taskname').value)`,
+      },
+      "check",
+      { color: "greenyellow" }
+    )
+  );
+  inputbox.append(
+    buildElement("textarea", {
+      id: "input-taskname",
+      onkeydown: `if (event.key == 'Enter') ${fname}(${fagrs}this.value)`,
+    })
+  );
+  return inputbox;
+}
+//toggler
+export const inputToggler = (parent, ele, ...toggle) => {
+  if (!parent.contains(ele)) {
+    for (let item of toggle) item.style.display = "none";
+    parent.append(ele);
+    let listener = (event) => {
+      if (!parent.contains(event.target)) {
+        inputToggler(parent, ele, ...toggle);
+        document.body.removeEventListener("click", listener, true);
+      }
+    };
+    document.body.addEventListener("click", listener, true);
+  } else {
+    ele.remove();
+    for (let item of toggle) item.removeAttribute("style");
+  }
+};
 //pop-up
 window.popup = popup;
 window.popupClose = popupClose;
 //add new tasks
-window.taskInputToggle = (card) => {
-  let ele = card.querySelector(".todo__tasks__list__icon ");
-  if (
-    ele.children[0].hasAttribute("style") ||
-    ele.children[1].hasAttribute("style")
-  ) {
-    let inputbox = ele.querySelector(".todo__tasks__list__task--input");
-    if (inputbox != null) inputbox.remove();
-    ele.children[0].removeAttribute("style");
-    ele.children[1].removeAttribute("style");
-  } else {
-    ele.children[0].style.display = "none";
-    ele.children[1].style.display = "none";
-    let inputbox = buildElement("div", {
-      class: "todo__tasks__list__task--input",
-    });
-    inputbox.append(
-      buildElement(
-        "lable",
-        {
-          class: "material-icons",
-          onclick:
-            "saveTask(this.closest('.todo__tasks__list'),document.getElementById('input-taskname').value);",
-        },
-        "check",
-        { color: "greenyellow" }
-      )
-    );
-    inputbox.append(
-      buildElement("textarea", {
-        id: "input-taskname",
-        onkeydown:
-          "if (event.key == 'Enter') saveTask(this.closest('.todo__tasks__list'),this.value);",
-      })
-    );
-    ele.append(inputbox);
-    ele.children[2].children[1].focus();
-    let clickfn = (event) => {
-      if (event.target.closest(".todo__tasks__list__task--input") == null) {
-        taskInputToggle(card);
-        document.body.removeEventListener("click", clickfn, true);
-      }
-    };
-    document.body.addEventListener("click", clickfn, true);
-  }
+window.taskInput = (card) => {
+  let parent = card.querySelector(".todo__tasks__list__icon ");
+  let inputbox = createInputBox(
+    "saveTask",
+    "this.closest('.todo__tasks__list')"
+  );
+  inputToggler(parent, inputbox, ...parent.children);
+  inputbox.children[1].focus();
 };
 window.saveTask = (card, name) => {
   name = trim(name);
@@ -196,4 +206,92 @@ window.deleteCompletedTask = (card, icon) => {
   }
   console.log(window.sessionStorage.tasklists);
   console.log(window.sessionStorage.tasklists.length);
+};
+//change card name
+window.changeCardName = (cardID) => {
+  let inputbox = createInputBox("saveCardNewName", cardID);
+  let parent = document.getElementById(cardID).children[0];
+  inputbox.children[1].value = parent.children[0].innerText;
+  inputToggler(parent, inputbox, ...parent.children);
+  inputbox.children[1].focus();
+};
+//save card new name
+window.saveCardNewName = (cardID, name) => {
+  document.body.click();
+  let card = document.getElementById(cardID);
+  name = trim(name);
+  if (name != card.children[0].children[0].innerText) {
+    card.children[0].children[0].innerText = name;
+    let cardString = findCard(cardID);
+    let nameString = nameREG.exec(cardString[0]);
+    sessionStorageUpdate(
+      cardString.index + nameString.index,
+      nameString[0].length,
+      name
+    );
+  }
+};
+//task modification
+window.taskMod = (cardID, taskEle) => {
+  if (taskEle.querySelector(".todo__tasks__list__task--mod") == null) {
+    let index = document
+      .getElementById(cardID)
+      .querySelectorAll(".todo__tasks__list__task");
+    index = Array.prototype.indexOf.call(index, taskEle);
+    let insert = buildElement("div", { class: "todo__tasks__list__task--mod" });
+    insert.append(
+      buildElement("button", {
+        onclick: "taskChangeName(this.parentNode.parentNode)",
+      })
+    );
+    insert.append(
+      buildElement("button", {
+        onclick: "deleteTask(this.parentNode.parentNode)",
+      })
+    );
+    inputToggler(taskEle, insert);
+  }
+};
+//task new name save
+window.taskChangeName = (taskEle) => {
+  let inputbox = createInputBox(
+    "taskNameUpdate",
+    "this.closest('.todo__tasks__list__task')"
+  );
+  inputbox.children[1].value = taskEle.querySelector("lable").innerText;
+  inputToggler(taskEle, inputbox, ...taskEle.children);
+};
+//save task new name
+window.taskNameUpdate = (tasksEle, name) => {
+  document.body.click();
+  name = trim(name);
+  let lable = tasksEle.querySelector("lable");
+  if (name != lable.innerText) {
+    lable.innerText = name;
+    let index = Array.prototype.indexOf.call(
+      tasksEle.parentNode.children,
+      tasksEle
+    );
+    let taskAll = findAllTasks(tasksEle.closest(".todo__tasks__list").id);
+    let tasks = taskAll[0].split(
+      taskSplitREG(tasksEle.closest(".todo__tasks__list").id)
+    );
+    tasks[index] = tasks[index].toObject();
+    tasks[index].name = name;
+    tasks[index] = tasks[index].toString();
+    sessionStorageUpdate(taskAll.index, taskAll[0].length, ...tasks);
+  }
+};
+//delete selected task
+window.deleteTask = (tasksEle) => {
+  let index = Array.prototype.indexOf.call(
+    tasksEle.parentNode.children,
+    tasksEle
+  );
+  let id = tasksEle.closest(".todo__tasks__list").id;
+  tasksEle.remove();
+  let tasks = findAllTasks(id);
+  tasksEle = tasks[0].split(taskSplitREG(id));
+  tasksEle[index] = "";
+  sessionStorageUpdate(tasks.index, tasks[0].length, ...tasksEle);
 };

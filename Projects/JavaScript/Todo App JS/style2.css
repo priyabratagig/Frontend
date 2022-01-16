@@ -79,7 +79,7 @@ body {
           justify-content: space-between;
 }
 
-.todo__tasks__list__name__link {
+.todo__tasks__list__name__link, .todo__tasks__list__name--delete, .todo__tasks__list__name--edit, .todo__tasks__list__name--back {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -93,64 +93,38 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.todo__tasks__list__name__link {
   color: var(--primary-color);
 }
 
-.todo__tasks__list__name--delete {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  color: var(--header-color-secondary);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.todo__tasks__list__name--delete span, .todo__tasks__list__name--delete a, .todo__tasks__list__name--edit span, .todo__tasks__list__name--edit a, .todo__tasks__list__name--back span, .todo__tasks__list__name--back a {
+  text-decoration: none;
+  font-size: inherit;
+  display: inline;
 }
 
-.todo__tasks__list__name--delete span {
-  font-size: 3.5rem;
-  display: inline;
+.todo__tasks__list__name--delete span:hover, .todo__tasks__list__name--delete span:active, .todo__tasks__list__name--delete a:hover, .todo__tasks__list__name--delete a:active, .todo__tasks__list__name--edit span:hover, .todo__tasks__list__name--edit span:active, .todo__tasks__list__name--edit a:hover, .todo__tasks__list__name--edit a:active, .todo__tasks__list__name--back span:hover, .todo__tasks__list__name--back span:active, .todo__tasks__list__name--back a:hover, .todo__tasks__list__name--back a:active {
+  font-size: 3rem;
+  color: var(--secondary-color);
+}
+
+.todo__tasks__list__name--delete span:active, .todo__tasks__list__name--delete a:active, .todo__tasks__list__name--edit span:active, .todo__tasks__list__name--edit a:active, .todo__tasks__list__name--back span:active, .todo__tasks__list__name--back a:active {
+  -webkit-transform: translateY(15%);
+          transform: translateY(15%);
 }
 
 .todo__tasks__list__name--delete span::after {
   content: "delete_sweep";
 }
 
-.todo__tasks__list__name--delete span:hover, .todo__tasks__list__name--delete span:active {
-  font-size: 3rem;
-  color: var(--tersiary-color);
-}
-
-.todo__tasks__list__name--delete span:active {
-  -webkit-transform: translateY(15%);
-          transform: translateY(15%);
-}
-
-.todo__tasks__list__name--back {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.todo__tasks__list__name--edit span::after {
+  content: "drive_file_rename_outline";
 }
 
 .todo__tasks__list__name--back a {
-  display: inline;
-  text-decoration: none;
   color: white;
-  font-size: 3rem;
   border-radius: 50%;
   background-color: var(--header-color-secondary);
 }
@@ -160,20 +134,16 @@ body {
 }
 
 .todo__tasks__list__name--back a:hover, .todo__tasks__list__name--back a:active {
-  font-size: 2.8rem;
-  background-color: var(--tersiary-color);
-}
-
-.todo__tasks__list__name--back a:active {
-  -webkit-transform: translateY(15%);
-          transform: translateY(15%);
+  color: white;
+  background-color: var(--secondary-color);
 }
 
 .todo__tasks__list__task {
   font-family: monospace;
   color: var(--pending-task-color);
   overflow-y: scroll;
-  margin: 1.5rem 0;
+  margin: 1.5rem;
+  margin-left: 0;
 }
 
 .todo__tasks__list__task input[type="checkbox"] {
@@ -235,6 +205,60 @@ body {
 
 .todo__tasks__list__task--scroll div:nth-child(n+2) {
   margin-top: .25em;
+}
+
+.todo__tasks__list__task--mod {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  gap: 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo__tasks__list__task--mod button {
+  font-size: 1.5rem;
+  padding: .1em 1em;
+  border: 0;
+  border-radius: 0.5em;
+  color: white;
+  margin: 0.2em 0;
+}
+
+.todo__tasks__list__task--mod button:first-child {
+  background-color: yellow;
+}
+
+.todo__tasks__list__task--mod button:first-child::before {
+  content: "Edit";
+}
+
+.todo__tasks__list__task--mod button:first-child:hover, .todo__tasks__list__task--mod button:first-child:active {
+  font-size: 1.4rem;
+  background-color: #ffe711;
+}
+
+.todo__tasks__list__task--mod button:last-child {
+  background-color: var(--primary-color);
+}
+
+.todo__tasks__list__task--mod button:last-child::before {
+  content: "Delete";
+}
+
+.todo__tasks__list__task--mod button:last-child:hover, .todo__tasks__list__task--mod button:last-child:active {
+  font-size: 1.4rem;
+  margin: 0 .2em;
+  background-color: var(--tersiary-color);
+}
+
+.todo__tasks__list__task--mod button:active {
+  -webkit-transform: translateY(10%);
+          transform: translateY(10%);
 }
 
 .todo__tasks__list__icon {

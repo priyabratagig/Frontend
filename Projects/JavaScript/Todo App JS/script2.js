@@ -1,9 +1,7 @@
-import "./modules/todo.js";
+import { createInputBox, inputToggler } from "./modules/todo.js";
 import { urlSearchParamREG, cardREG } from "./modules/regex.js";
 import { ObjectToCard } from "./modules/utils.js";
 console.log("script2.js");
-// window.sessionStorage.tasklists =
-//   '[{"id":"01","name":"Trip to Paris","tasks":[{"name":"Completed Task","status":true},{"name":"Plesae uncheck above task","status":false}]},{"id":"02","name":"My Todo List","tasks":[{"name":"Completed Task","status":true},{"name":"Press Add Lsit","status":false}]},{"id":"03","name":"My Todo List","tasks":[{"name":"Completed Task","status":true},{"name":"Check me","status":false}]}]';
 //card load
 ((search) => {
   let card;
@@ -30,3 +28,16 @@ function redirectToHome() {
   href = href.slice(0, href.lastIndexOf("/") + 1);
   window.location.replace(href + "index.html");
 }
+//change card name
+window.changeCardName = (cardID) => {
+  let inputbox = createInputBox("saveCardNewName", cardID);
+  let parent = document.querySelector(".todo__tasks__list__name__link");
+  inputbox.children[1].value = parent.innerText;
+  inputToggler(parent, inputbox, parent.nextElementSibling);
+  parent.style.position = "relative";
+  inputbox.style.position = "absolute";
+  inputbox.style.minHeight = "100%";
+  inputbox.style.minWidth = "100%";
+  inputbox.style.backgroundColor = "white";
+  inputbox.children[1].focus();
+};
