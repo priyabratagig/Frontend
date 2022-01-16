@@ -108,6 +108,7 @@ window.taskInput = (card) => {
   inputbox.children[1].focus();
 };
 window.saveTask = (card, name) => {
+  document.body.click();
   name = trim(name);
   if (name.length < 1) return null;
   card.querySelector(".todo__tasks__list__task--input").remove();
