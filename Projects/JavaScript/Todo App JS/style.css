@@ -56,20 +56,20 @@ body {
   display: -ms-grid;
   display: grid;
   gap: 1rem;
+  grid-template-rows: -webkit-min-content auto;
+  grid-template-rows: min-content auto;
   -ms-grid-rows: min-content auto;
-      grid-template-rows: -webkit-min-content auto;
-      grid-template-rows: min-content auto;
 }
 
 .todo__header {
   display: -ms-grid;
   display: grid;
+  grid-template-columns: auto auto;
   -ms-grid-columns: auto auto;
-      grid-template-columns: auto auto;
   grid-auto-rows: -webkit-min-content;
   grid-auto-rows: min-content;
+  -ms-grid-rows: min-content;
   gap: 0.5rem;
-  place-items: left center;
 }
 
 .todo__header__1 {
@@ -138,6 +138,7 @@ body {
   display: grid;
   grid-auto-rows: -webkit-max-content;
   grid-auto-rows: max-content;
+  -ms-grid-rows: max-content;
   overflow-y: scroll;
 }
 
@@ -164,9 +165,9 @@ body {
 .todo__tasks__list__name {
   display: -ms-grid;
   display: grid;
+  grid-template-columns: auto -webkit-min-content -webkit-min-content;
+  grid-template-columns: auto min-content min-content;
   -ms-grid-columns: auto min-content min-content;
-      grid-template-columns: auto -webkit-min-content -webkit-min-content;
-      grid-template-columns: auto min-content min-content;
   border-bottom: 1px solid var(--popup-secondary-color);
   margin-right: .5em;
 }
@@ -228,6 +229,7 @@ body {
 }
 
 .todo__tasks__list__task--scroll {
+  overflow-y: scroll;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -418,10 +420,11 @@ body {
   transition: opacity 0.1s ease-out, top 0.5s;
   min-width: 80vw;
   max-height: 80vh;
+  grid-template-rows: -webkit-min-content -webkit-min-content;
+  grid-template-rows: min-content min-content;
   -ms-grid-rows: min-content min-content;
-      grid-template-rows: -webkit-min-content -webkit-min-content;
-      grid-template-rows: min-content min-content;
   grid-auto-rows: 1fr;
+  -ms-grid-rows: 1fr;
   visibility: collapse;
 }
 
@@ -556,12 +559,13 @@ body {
             transform: translate(-50%, -20%);
     height: unset;
     max-height: 90vh;
-    width: 90vw;
+    width: 100vw;
   }
   .todo__header {
+    grid-template-columns: -webkit-min-content -webkit-min-content auto;
+    grid-template-columns: min-content min-content auto;
     -ms-grid-columns: min-content min-content auto;
-        grid-template-columns: -webkit-min-content -webkit-min-content auto;
-        grid-template-columns: min-content min-content auto;
+    padding: 0 4vw;
   }
   .todo__header__2 {
     -ms-grid-column: 2;
@@ -599,6 +603,7 @@ body {
     padding-right: 1em;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    padding: 0 4vw;
   }
   .todo__tasks__list {
     -webkit-box-flex: 0;
@@ -606,7 +611,7 @@ body {
             flex: 0 0 32%;
     -webkit-box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.1);
             box-shadow: 0.5em 0.5em rgba(0, 0, 0, 0.1);
-    max-height: 40vw;
+    max-height: 50vh;
   }
   .todo__tasks__list__task--scroll {
     overflow-y: scroll;
@@ -624,6 +629,22 @@ body {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
+    width: 90vw;
+  }
+  .todo__header {
+    padding: 0px 3rem;
+  }
+  .todo__header__1, .todo__header__2 {
+    place-self: flex-end flex-start;
+  }
+  .todo__header__3 {
+    place-self: center flex-end;
+  }
+  .todo__tasks {
+    padding: 0px 3rem;
+  }
+  .todo__tasks__list {
+    max-height: 70vh;
   }
 }
 /*# sourceMappingURL=style.css.map */

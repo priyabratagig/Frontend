@@ -111,7 +111,6 @@ window.saveTask = (card, name) => {
   document.body.click();
   name = trim(name);
   if (name.length < 1) return null;
-  card.querySelector(".todo__tasks__list__task--input").remove();
   let ele = card.querySelector(".todo__tasks__list__icon");
   ele.children[0].style = "";
   ele.children[1].style = "";

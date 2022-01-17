@@ -61,8 +61,8 @@ body {
           transform: translate(-50%, -50%);
   display: -ms-grid;
   display: grid;
+  grid-template-rows: 3fr 4fr;
   -ms-grid-rows: 3fr 4fr;
-      grid-template-rows: 3fr 4fr;
   font-size: 2rem;
 }
 
@@ -351,10 +351,11 @@ body {
   transition: opacity 0.1s ease-out, top 0.5s;
   min-width: 80vw;
   max-height: 80vh;
+  grid-template-rows: -webkit-min-content -webkit-min-content;
+  grid-template-rows: min-content min-content;
   -ms-grid-rows: min-content min-content;
-      grid-template-rows: -webkit-min-content -webkit-min-content;
-      grid-template-rows: min-content min-content;
   grid-auto-rows: 1fr;
+  -ms-grid-rows: 1fr;
   visibility: collapse;
 }
 
@@ -482,11 +483,11 @@ body {
 
 @media (min-width: 44em) {
   .todo__tasks__list {
+    grid-template-rows: 1fr -webkit-max-content;
+    grid-template-rows: 1fr max-content;
     -ms-grid-rows: 1fr max-content;
-        grid-template-rows: 1fr -webkit-max-content;
-        grid-template-rows: 1fr max-content;
+    grid-template-columns: 1fr 1fr;
     -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
     -webkit-column-gap: 5%;
             column-gap: 5%;
   }
