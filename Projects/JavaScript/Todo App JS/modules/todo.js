@@ -111,11 +111,8 @@ window.saveTask = (card, name) => {
   document.body.click();
   name = trim(name);
   if (name.length < 1) return null;
-  let ele = card.querySelector(".todo__tasks__list__icon");
-  ele.children[0].style = "";
-  ele.children[1].style = "";
+  let ele = card.querySelector(".todo__tasks__list__task--scroll");
   let task = createTask(name);
-  ele = card.querySelector(".todo__tasks__list__task--scroll");
   if (ele == undefined || ele == null) {
     ele = buildElement("div", { class: "todo__tasks__list__task--scroll" });
     card.insertBefore(ele, card.querySelector(".todo__tasks__list__icon"));
@@ -126,8 +123,6 @@ window.saveTask = (card, name) => {
   let reg = findAllTasks(card.id);
   if (reg == null) return 0;
   sessionStorageUpdate(reg.index, reg[0].length, reg[0], task);
-  console.log(window.sessionStorage.tasklists);
-  console.log(window.sessionStorage.tasklists.length);
 };
 //add new list
 window.addNewList = function (name, popup) {
@@ -150,7 +145,6 @@ window.addNewList = function (name, popup) {
       cardToObject(listcard).toString()
     );
   }
-  console.log(window.sessionStorage.tasklists);
 };
 //task status change
 window.changeStatus = (ele) => {
@@ -160,10 +154,7 @@ window.changeStatus = (ele) => {
   tasks[index] = tasks[index].toObject();
   tasks[index].status = tasks[index].status ? false : true;
   tasks[index] = tasks[index].toString();
-  console.log(tasks);
   sessionStorageUpdate(reg.index, reg[0].length, ...tasks);
-  console.log(window.sessionStorage.tasklists);
-  console.log(window.sessionStorage.tasklists.length);
 };
 //tasklist card delete
 window.deleteTaskCard = (id) => {
@@ -178,8 +169,6 @@ window.deleteTaskCard = (id) => {
     ""
   );
   document.getElementById(id).remove();
-  console.log(window.sessionStorage.tasklists);
-  console.log(window.sessionStorage.tasklists.length);
 };
 //delete completed task
 window.deleteCompletedTask = (card, icon) => {
@@ -204,8 +193,6 @@ window.deleteCompletedTask = (card, icon) => {
       );
     }
   }
-  console.log(window.sessionStorage.tasklists);
-  console.log(window.sessionStorage.tasklists.length);
 };
 //change card name
 window.changeCardName = (cardID) => {
@@ -254,6 +241,7 @@ window.taskMod = (cardID, taskEle) => {
 };
 //task new name save
 window.taskChangeName = (taskEle) => {
+  document.body.click();
   let inputbox = createInputBox(
     "taskNameUpdate",
     "this.closest('.todo__tasks__list__task')"
