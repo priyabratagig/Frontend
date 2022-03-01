@@ -1,0 +1,47 @@
+main {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+.head {
+  font-weight: 700;
+  font-size: 4rem;
+  text-shadow: 5px 5px 5px rgb(35, 255, 244);
+  margin-bottom: 2em;
+}
+section {
+  width: 90vw;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 10rem;
+}
+.box {
+  place-self: flex-start flex-start;
+  padding: 2em 1em;
+  border: 2px solid black;
+  border-radius: 3em;
+  background-color: aqua;
+}
+.hover {
+  background-color: rgb(0, 209, 209);
+}
+.hover:hover {
+  background-color: aqua;
+}
+.box:nth-of-type(odd) {
+  place-self: flex-start flex-end;
+}
+.box-heading {
+  font-size: 3em;
+  margin: 1em 0;
+}
+.text-style {
+  font-size: 2em;
+  font-weight: 600;
+}

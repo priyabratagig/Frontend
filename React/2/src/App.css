@@ -1,0 +1,63 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 75vw;
+  margin: 0 auto;
+}
+.form > legend {
+  font-size: 3rem;
+  margin-left: 1em;
+}
+.form > div {
+  font-size: 2em;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+.form > div > label {
+  font-weight: 600;
+}
+.form > div > input {
+  width: 70%;
+  text-align: center;
+}
+.form > button {
+  font-size: 3rem;
+  padding: 0.1em 1em;
+  margin-bottom: 1em;
+  border-radius: 2em;
+  background-color: rgb(4, 204, 204);
+}
+.form > button:hover,
+button:active {
+  background-color: rgb(0, 252, 252);
+}
+.user-list {
+  width: 75vw;
+  margin: 20vh auto 0;
+  border: 0.2rem solid black;
+  border-radius: 0.5rem;
+  display: flex;
+  background-color: lightsteelblue;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 2em;
+  column-gap: 5%;
+}
+.user {
+  flex: 0 0 40%;
+  font-size: 2rem;
+  background-color: rgb(236, 87, 236);
+  padding: 1.5em 1em;
+  border: 0.1em solid black;
+  border-radius: 2em;
+}
+.user > span {
+  padding: 0 0.5em;
+}
+.user > span:nth-child(2) {
+  border-left: 0.1em solid black;
+  border-right: 0.1em solid black;
+}
