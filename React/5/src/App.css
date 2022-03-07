@@ -1,0 +1,126 @@
+.navbar {
+  width: 100vw;
+  background-color: rgb(0, 102, 255);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5em;
+}
+.navbar__link {
+  font-size: 3rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+}
+.navbar__link:hover,
+.navbar__link:active {
+  color: lightgrey;
+}
+.HTTP-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: max-content;
+}
+.HTTP-error__heading--primary {
+  font-size: 8rem;
+  color: dodgerblue;
+}
+.HTTP-error__heading--secondary {
+  font-size: 6rem;
+  color: cornflowerblue;
+  text-transform: uppercase;
+}
+.HTTP-error__link {
+  font-size: 3rem;
+}
+.student {
+  width: 90vw;
+  margin: auto;
+}
+.student__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.student__header--text {
+  font-size: 5rem;
+}
+.student__header--link {
+  font-size: 2rem;
+  padding: 0.5em 2em;
+  border-radius: 1em;
+}
+.table {
+  width: 100%;
+  margin: 1em auto;
+  background-color: white;
+  border-radius: 0.4rem;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+.table__head__row,
+.table__body__row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 1px solid darkgrey;
+  padding: 0.5em 0;
+}
+.table__body__row:last-child {
+  border: none;
+}
+.table *:visited {
+  color: blue;
+}
+.student-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 75vw;
+  min-height: 75vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+.student-form fieldset {
+  width: 70%;
+  place-self: center;
+  background-color: rgb(215, 249, 252);
+  font-size: 2rem;
+  padding: 0 0.5em 0.5em;
+}
+.student-form input {
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 2rem;
+}
+.student-form--buttons {
+  grid-column: 2;
+  place-self: center flex-end;
+  display: flex;
+  gap: 2rem;
+}
+.student-form--submit,
+.student-form--cancel {
+  font-size: 2rem;
+  padding: 0.5em 4em;
+  border-radius: 2em;
+}
+.student-form--cancel {
+  background-color: rgb(122, 122, 122);
+}
+.student-form--delete {
+  grid-column: 1 / span 2;
+  place-self: center;
+}
+.student-form--delete button {
+  font-size: 2rem;
+  padding: 0.5em 2em;
+  border-radius: 2em;
+  background-color: red;
+  color: white;
+}
