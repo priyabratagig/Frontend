@@ -27,14 +27,14 @@ class StudentBase extends Component {
       .then((data) => this.setState({ students: data }));
   }
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.students.length != nextState.students.length) return true;
+    if (this.state.students.length !== nextState.students.length) return true;
     return this.state.students.some((ele, index) => {
       const newEle = nextState.students[index];
       return (
-        ele.name == newEle.name &&
-        ele.age == newEle.age &&
-        ele.course == newEle.course &&
-        ele.batch == newEle.batch
+        ele.name === newEle.name &&
+        ele.age === newEle.age &&
+        ele.course === newEle.course &&
+        ele.batch === newEle.batch
       );
     });
   }
