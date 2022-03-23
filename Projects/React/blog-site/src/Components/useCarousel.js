@@ -216,7 +216,7 @@ const useCarousel = () => {
     }
     //stop carousle
     const carouselStop = animationStop;
-    return { carouselStart, carouselStop, carouselShiftSlide, carouselUnmount }
+    return { carouselStartFrom, carouselStart, carouselStop, carouselShiftSlide, carouselUnmount }
 }
 export default useCarousel;
 // useCarousel coustom hook, will return an object of fucntions that can start, stop and control carousel behaviours
