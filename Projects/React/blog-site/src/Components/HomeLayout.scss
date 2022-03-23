@@ -1,0 +1,30 @@
+.home__main {
+    display: grid;
+    // row-gap: 5%
+}
+@media (min-width: 48em) {
+    .home__main {
+        grid-template-columns: 50% 40%;
+        grid-template-rows: max-content max-content;
+        justify-content: space-between;
+
+        & > *:first-child {
+            width: 100%;
+            grid-row: 1;
+            grid-column: 1s;
+        }
+        & > *:nth-child(2) {
+            grid-row: 1 ;
+            grid-column: 2 ;
+        }
+         &>*:nth-child(3) {
+             grid-row: 2 ;
+             grid-column: 1 ;
+             align-self: center;
+         }
+         &>*:nth-child(4) {
+             grid-row: 2 ;
+             grid-column: 2;
+         }
+    }
+}

@@ -1,0 +1,31 @@
+@use './story';
+.article {
+
+    &--small {
+        flex-direction: row;
+        align-items: stretch;
+
+        & .article {
+
+            &__image {
+                max-width: 50%;
+            }
+            &__main {
+                display: flex;
+                flex-direction: column;
+                padding-right: 10%;
+
+                &__info {
+                    margin-top: auto;
+                }
+            }
+        }
+    }
+}
+// @media (min-width: 48em) {
+//     .article {
+//         &--small &__main {
+//             padding-right: 10%;
+//         }
+//     }
+// }

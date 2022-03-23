@@ -1,0 +1,32 @@
+.gallerySingleTile {
+
+    height: 70vh;
+    position: relative;
+
+    & .imageTile__text {
+        justify-content: center;
+        align-items: stretch;
+        margin: 0;
+        text-align: center;
+    }
+    &__arrow {
+        position: absolute;
+        width: 5%;
+        z-index: 1;
+
+        &--left {
+            left: 2%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &--right {
+            right: 2%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &:hover,
+        &:active {
+            top: 49%;
+        }
+    }
+}

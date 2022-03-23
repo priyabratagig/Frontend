@@ -1,0 +1,18 @@
+@use './story';
+.article {
+    flex-direction: column;
+
+    &__main {
+
+        &__info {
+            margin: 5% 0 0;
+        }
+    }
+}
+@media (min-width: 48em) {
+    .article {
+        &__main {
+            padding: 0 2rem;
+        }
+    }
+}
