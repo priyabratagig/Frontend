@@ -59,9 +59,11 @@
     .nav {
 
         &__links {
-            display: flex;
+            flex-direction: row;
             justify-content: space-evenly;
-
+            position: static;
+            background-color: initial;
+            transition: none;
         }
     }
 }
